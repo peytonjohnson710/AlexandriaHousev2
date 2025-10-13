@@ -1,994 +1,1168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandria House - A House of Hospitality and Hope</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --forest-green: #1b4332;
-            --sage: #52796f;
-            --mint: #84a98c;
-            --cream: #cad2c5;
-            --off-white: #f8f9fa;
-            --gold: #d4a574;
-            --text-dark: #2d3436;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
-            color: var(--text-dark);
-            background: var(--off-white);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(27, 67, 50, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--forest-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--forest-green);
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--sage);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .donate-btn {
-            background: var(--gold);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .donate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
-            background: #c69563;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(27, 67, 50, 0.85) 0%, rgba(82, 121, 111, 0.75) 100%);
-        }
-
-        .hero-background-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            z-index: 1;
-            color: white;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <title>Alexandria House - A House of Hospitality and Hope</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-            to {
+
+            :root {
+                --forest-green: #1b4332;
+                --sage: #52796f;
+                --mint: #84a98c;
+                --cream: #cad2c5;
+                --off-white: #f8f9fa;
+                --gold: #d4a574;
+                --text-dark: #2d3436;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+                    sans-serif;
+                overflow-x: hidden;
+                color: var(--text-dark);
+                background: var(--off-white);
+            }
+
+            /* Navigation */
+            nav {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(27, 67, 50, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            nav.scrolled {
+                box-shadow: 0 4px 20px rgba(27, 67, 50, 0.1);
+            }
+
+            .nav-container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 20px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+                color: var(--forest-green);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 40px;
+                list-style: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--forest-green);
+                font-size: 15px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .nav-links a:hover {
+                color: var(--sage);
+            }
+
+            .nav-links a::after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--gold);
+                transition: width 0.3s ease;
+            }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+
+            .donate-btn {
+                background: var(--gold);
+                color: white;
+                padding: 12px 28px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                font-size: 14px;
+            }
+
+            .donate-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+                background: #c69563;
+            }
+
+            /* Hero Section */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                padding-top: 80px;
+            }
+
+            .hero-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .hero-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(27, 67, 50, 0.85) 0%, rgba(82, 121, 111, 0.75) 100%);
+            }
+
+            .hero-background-placeholder {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
+            }
+
+            .hero-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 40px;
+                z-index: 1;
+                color: white;
+                animation: fadeInUp 1s ease;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .hero h1 {
+                font-size: 72px;
+                font-weight: 800;
+                line-height: 1.1;
+                margin-bottom: 24px;
+                letter-spacing: -2px;
+            }
+
+            .hero-tagline {
+                font-size: 32px;
+                font-weight: 300;
+                margin-bottom: 16px;
+                color: var(--gold);
+            }
+
+            .hero p {
+                font-size: 20px;
+                font-weight: 300;
+                margin-bottom: 40px;
+                opacity: 0.95;
+                max-width: 700px;
+                line-height: 1.6;
+            }
+
+            .cta-buttons {
+                display: flex;
+                gap: 20px;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                padding: 18px 36px;
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+            .cta-primary {
+                background: var(--gold);
+                color: white;
+            }
+
+            .cta-primary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+            }
+
+            .cta-secondary {
+                background: transparent;
+                color: white;
+                border: 2px solid white;
+            }
+
+            .cta-secondary:hover {
+                background: white;
+                color: var(--forest-green);
+            }
+
+            /* Mission Section */
+            .mission {
+                padding: 120px 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                background: var(--off-white);
+            }
+
+            .mission h2 {
+                font-size: 56px;
+                font-weight: 800;
+                margin-bottom: 40px;
+                letter-spacing: -1.5px;
+                line-height: 1.2;
+                color: var(--forest-green);
+            }
+
+            .mission p {
+                font-size: 22px;
+                line-height: 1.7;
+                color: var(--text-dark);
+                margin-bottom: 24px;
+            }
+
+            /* Interactive Image Grid */
+            .photo-showcase {
+                padding: 100px 40px;
+                background: white;
+            }
+
+            .photo-grid {
+                max-width: 1400px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            .photo-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+                cursor: pointer;
+                aspect-ratio: 4/3;
+                background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
+                transition: transform 0.4s ease;
+            }
+
+            .photo-item:hover {
+                transform: scale(1.05);
+            }
+
+            .photo-item::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, transparent 0%, rgba(27, 67, 50, 0.8) 100%);
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .photo-item:hover::before {
                 opacity: 1;
+            }
+
+            .photo-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 24px;
+                color: white;
+                transform: translateY(100%);
+                transition: transform 0.4s ease;
+            }
+
+            .photo-item:hover .photo-caption {
                 transform: translateY(0);
             }
-        }
 
-        .hero h1 {
-            font-size: 72px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
+            .photo-caption h3 {
+                font-size: 20px;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
 
-        .hero-tagline {
-            font-size: 32px;
-            font-weight: 300;
-            margin-bottom: 16px;
-            color: var(--gold);
-        }
+            .photo-caption p {
+                font-size: 14px;
+                opacity: 0.9;
+            }
 
-        .hero p {
-            font-size: 20px;
-            font-weight: 300;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 700px;
-            line-height: 1.6;
-        }
+            /* Impact Stats with Animation */
+            .impact-stats {
+                background: var(--forest-green);
+                padding: 120px 40px;
+                position: relative;
+                overflow: hidden;
+            }
 
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .cta-primary, .cta-secondary {
-            padding: 18px 36px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .cta-primary {
-            background: var(--gold);
-            color: white;
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-secondary:hover {
-            background: white;
-            color: var(--forest-green);
-        }
-
-        /* Mission Section */
-        .mission {
-            padding: 120px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--off-white);
-        }
-
-        .mission h2 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 40px;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
-            color: var(--forest-green);
-        }
-
-        .mission p {
-            font-size: 22px;
-            line-height: 1.7;
-            color: var(--text-dark);
-            margin-bottom: 24px;
-        }
-
-        /* Interactive Image Grid */
-        .photo-showcase {
-            padding: 100px 40px;
-            background: white;
-        }
-
-        .photo-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .photo-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            cursor: pointer;
-            aspect-ratio: 4/3;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
-            transition: transform 0.4s ease;
-        }
-
-        .photo-item:hover {
-            transform: scale(1.05);
-        }
-
-        .photo-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 0%, rgba(27, 67, 50, 0.8) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .photo-item:hover::before {
-            opacity: 1;
-        }
-
-        .photo-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 24px;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .photo-item:hover .photo-caption {
-            transform: translateY(0);
-        }
-
-        .photo-caption h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .photo-caption p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Impact Stats with Animation */
-        .impact-stats {
-            background: var(--forest-green);
-            padding: 120px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .impact-stats::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--mint);
-            opacity: 0.15;
-            border-radius: 50%;
-            top: -150px;
-            right: -150px;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .impact-stats::after {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--gold);
-            opacity: 0.1;
-            border-radius: 50%;
-            bottom: -100px;
-            left: -100px;
-            animation: pulse 5s ease-in-out infinite;
-            animation-delay: 1s;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
+            .impact-stats::before {
+                content: "";
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                background: var(--mint);
                 opacity: 0.15;
+                border-radius: 50%;
+                top: -150px;
+                right: -150px;
+                animation: pulse 4s ease-in-out infinite;
             }
-            50% {
-                transform: scale(1.15);
-                opacity: 0.25;
+
+            .impact-stats::after {
+                content: "";
+                position: absolute;
+                width: 350px;
+                height: 350px;
+                background: var(--gold);
+                opacity: 0.1;
+                border-radius: 50%;
+                bottom: -100px;
+                left: -100px;
+                animation: pulse 5s ease-in-out infinite;
+                animation-delay: 1s;
             }
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat {
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .stat-number {
-            font-size: 64px;
-            font-weight: 800;
-            color: var(--gold);
-            margin-bottom: 12px;
-            letter-spacing: -2px;
-        }
-
-        .stat-label {
-            font-size: 18px;
-            color: var(--cream);
-            font-weight: 500;
-        }
-
-        /* Services Section with Cards */
-        .services {
-            padding: 120px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--off-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--mint);
-            opacity: 0.08;
-            border-radius: 50%;
-            top: 100px;
-            left: -100px;
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        .services h2 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 80px;
-            text-align: center;
-            letter-spacing: -1.5px;
-            color: var(--forest-green);
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
-        }
-
-        .service-image {
-            height: 250px;
-            background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:nth-child(2) .service-image {
-            background: linear-gradient(135deg, var(--mint) 0%, var(--sage) 100%);
-        }
-
-        .service-card:nth-child(3) .service-image {
-            background: linear-gradient(135deg, var(--gold) 0%, #b8925e 100%);
-        }
-
-        .service-card:nth-child(4) .service-image {
-            background: linear-gradient(135deg, var(--forest-green) 0%, #0d2419 100%);
-        }
-
-        .service-content {
-            padding: 32px;
-        }
-
-        .service-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-            color: var(--forest-green);
-        }
-
-        .service-content p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-dark);
-            margin-bottom: 24px;
-        }
-
-        .learn-more {
-            color: var(--gold);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: gap 0.3s ease;
-        }
-
-        .learn-more:hover {
-            gap: 12px;
-        }
-
-        /* Values Section */
-        .values {
-            background: white;
-            padding: 120px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .values::before {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--sage);
-            opacity: 0.06;
-            border-radius: 50%;
-            bottom: -100px;
-            right: -100px;
-            animation: pulse 5s ease-in-out infinite;
-        }
-
-        .values-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .values h2 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 60px;
-            letter-spacing: -1.5px;
-            color: var(--forest-green);
-            text-align: center;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .value-item {
-            text-align: center;
-            padding: 40px;
-            background: var(--off-white);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .value-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(27, 67, 50, 0.12);
-        }
-
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background: var(--mint);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            transition: all 0.3s ease;
-        }
-
-        .value-item:hover .value-icon {
-            background: var(--forest-green);
-            transform: rotate(360deg);
-        }
-
-        .value-item h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--forest-green);
-        }
-
-        .value-item p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Story Section */
-        .story-section {
-            background: var(--sage);
-            color: white;
-            padding: 120px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .story-section::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--forest-green);
-            opacity: 0.3;
-            border-radius: 50%;
-            top: -150px;
-            left: -150px;
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        .story-section::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--gold);
-            opacity: 0.15;
-            border-radius: 50%;
-            bottom: -100px;
-            right: 100px;
-            animation: pulse 7s ease-in-out infinite;
-            animation-delay: 2s;
-        }
-
-        .story-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .story-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .story-header h2 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -1.5px;
-        }
-
-        .story-header p {
-            font-size: 20px;
-            opacity: 0.95;
-        }
-
-        .story-highlight {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        .story-image {
-            height: 500px;
-            background: linear-gradient(135deg, var(--forest-green) 0%, #0d2419 100%);
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .story-content h3 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }
-
-        .story-content p {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 32px;
-            opacity: 0.95;
-        }
-
-        /* Get Involved Section */
-        .get-involved {
-            padding: 120px 40px;
-            background: var(--off-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .get-involved::before {
-            content: '';
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--mint);
-            opacity: 0.1;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 5s ease-in-out infinite;
-        }
-
-        .involved-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .involved-container h2 {
-            font-size: 56px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: -1.5px;
-            color: var(--forest-green);
-        }
-
-        .involved-container p {
-            font-size: 20px;
-            margin-bottom: 60px;
-            color: var(--text-dark);
-        }
-
-        .involved-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .involved-btn {
-            padding: 18px 36px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .involved-btn.primary {
-            background: var(--gold);
-            color: white;
-        }
-
-        .involved-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
-        }
-
-        .involved-btn.secondary {
-            background: var(--forest-green);
-            color: white;
-        }
-
-        .involved-btn.secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.4);
-        }
-
-        .involved-btn.outline {
-            background: transparent;
-            color: var(--forest-green);
-            border: 2px solid var(--forest-green);
-        }
-
-        .involved-btn.outline:hover {
-            background: var(--forest-green);
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--forest-green);
-            color: var(--cream);
-            padding: 80px 40px 40px;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-about h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-
-        .footer-about p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .footer-links h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gold);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: var(--cream);
-            text-decoration: none;
-            opacity: 0.85;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(202, 210, 197, 0.2);
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 42px; }
-            .hero-tagline { font-size: 24px; }
-            .hero p { font-size: 18px; }
-            .mission h2, .services h2, .values h2, .story-header h2, .involved-container h2 { font-size: 36px; }
-            .story-highlight { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .cta-buttons { flex-direction: column; }
-            .involved-buttons { flex-direction: column; align-items: center; }
-        }
-    </style>
-</head>
-<body>
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">Alexandria House</div>
-            <ul class="nav-links">
-                <li><a href="#mission">Our Mission</a></li>
-                <li><a href="#services">What We Do</a></li>
-                <li><a href="#stories">Stories</a></li>
-                <li><a href="#involved">Get Involved</a></li>
-            </ul>
-            <a href="#donate" class="donate-btn">Donate</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <!-- Replace this div with your video element -->
-
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="images/ah.mp4" type="video/mp4">
-        </video>
-          <!--
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                    opacity: 0.15;
+                }
+                50% {
+                    transform: scale(1.15);
+                    opacity: 0.25;
+                }
+            }
+
+            .stats-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 60px;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+            }
+
+            .stat {
+                animation: fadeIn 1s ease;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .stat-number {
+                font-size: 64px;
+                font-weight: 800;
+                color: var(--gold);
+                margin-bottom: 12px;
+                letter-spacing: -2px;
+            }
+
+            .stat-label {
+                font-size: 18px;
+                color: var(--cream);
+                font-weight: 500;
+            }
+
+            /* Services Section with Cards */
+            .services {
+                padding: 120px 40px;
+                max-width: 1400px;
+                margin: 0 auto;
+                background: var(--off-white);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .services::before {
+                content: "";
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: var(--mint);
+                opacity: 0.08;
+                border-radius: 50%;
+                top: 100px;
+                left: -100px;
+                animation: pulse 6s ease-in-out infinite;
+            }
+
+            .services h2 {
+                font-size: 56px;
+                font-weight: 800;
+                margin-bottom: 80px;
+                text-align: center;
+                letter-spacing: -1.5px;
+                color: var(--forest-green);
+                position: relative;
+                z-index: 1;
+            }
+
+            .service-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 40px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .service-card {
+                background: white;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+                transition: all 0.4s ease;
+                cursor: pointer;
+            }
+
+            .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
+            }
+
+            .service-image {
+                height: 250px;
+                background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .service-card:nth-child(2) .service-image {
+                background: linear-gradient(135deg, var(--mint) 0%, var(--sage) 100%);
+            }
+
+            .service-card:nth-child(3) .service-image {
+                background: linear-gradient(135deg, var(--gold) 0%, #b8925e 100%);
+            }
+
+            .service-card:nth-child(4) .service-image {
+                background: linear-gradient(135deg, var(--forest-green) 0%, #0d2419 100%);
+            }
+
+            .service-content {
+                padding: 32px;
+            }
+
+            .service-content h3 {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                letter-spacing: -0.5px;
+                color: var(--forest-green);
+            }
+
+            .service-content p {
+                font-size: 16px;
+                line-height: 1.6;
+                color: var(--text-dark);
+                margin-bottom: 24px;
+            }
+
+            .learn-more {
+                color: var(--gold);
+                font-weight: 600;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                transition: gap 0.3s ease;
+            }
+
+            .learn-more:hover {
+                gap: 12px;
+            }
+
+            /* Values Section */
+            .values {
+                background: white;
+                padding: 120px 40px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .values::before {
+                content: "";
+                position: absolute;
+                width: 350px;
+                height: 350px;
+                background: var(--sage);
+                opacity: 0.06;
+                border-radius: 50%;
+                bottom: -100px;
+                right: -100px;
+                animation: pulse 5s ease-in-out infinite;
+            }
+
+            .values-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 1;
+            }
+
+            .values h2 {
+                font-size: 56px;
+                font-weight: 800;
+                margin-bottom: 60px;
+                letter-spacing: -1.5px;
+                color: var(--forest-green);
+                text-align: center;
+            }
+
+            .values-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 40px;
+            }
+
+            .value-item {
+                text-align: center;
+                padding: 40px;
+                background: var(--off-white);
+                border-radius: 16px;
+                transition: all 0.3s ease;
+            }
+
+            .value-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 30px rgba(27, 67, 50, 0.12);
+            }
+
+            .value-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px;
+                background: var(--mint);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                transition: all 0.3s ease;
+            }
+
+            .value-item:hover .value-icon {
+                background: var(--forest-green);
+                transform: rotate(360deg);
+            }
+
+            .value-item h3 {
+                font-size: 24px;
+                font-weight: 700;
+                margin-bottom: 16px;
+                color: var(--forest-green);
+            }
+
+            .value-item p {
+                font-size: 16px;
+                line-height: 1.6;
+                color: var(--text-dark);
+            }
+
+            /* Story Section */
+            .story-section {
+                background: var(--sage);
+                color: white;
+                padding: 120px 40px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .story-section::before {
+                content: "";
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                background: var(--forest-green);
+                opacity: 0.3;
+                border-radius: 50%;
+                top: -150px;
+                left: -150px;
+                animation: pulse 6s ease-in-out infinite;
+            }
+
+            .story-section::after {
+                content: "";
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: var(--gold);
+                opacity: 0.15;
+                border-radius: 50%;
+                bottom: -100px;
+                right: 100px;
+                animation: pulse 7s ease-in-out infinite;
+                animation-delay: 2s;
+            }
+
+            .story-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 1;
+            }
+
+            .story-header {
+                text-align: center;
+                margin-bottom: 80px;
+            }
+
+            .story-header h2 {
+                font-size: 56px;
+                font-weight: 800;
+                margin-bottom: 24px;
+                letter-spacing: -1.5px;
+            }
+
+            .story-header p {
+                font-size: 20px;
+                opacity: 0.95;
+            }
+
+            .story-highlight {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+                align-items: center;
+                margin-bottom: 60px;
+            }
+
+            .story-image {
+                height: 500px;
+                background: linear-gradient(135deg, var(--forest-green) 0%, #0d2419 100%);
+                border-radius: 16px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+
+            .story-content h3 {
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 24px;
+                letter-spacing: -1px;
+            }
+
+            .story-content p {
+                font-size: 18px;
+                line-height: 1.7;
+                margin-bottom: 32px;
+                opacity: 0.95;
+            }
+
+            /* Get Involved Section */
+            .get-involved {
+                padding: 120px 40px;
+                background: var(--off-white);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .get-involved::before {
+                content: "";
+                position: absolute;
+                width: 350px;
+                height: 350px;
+                background: var(--mint);
+                opacity: 0.1;
+                border-radius: 50%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                animation: pulse 5s ease-in-out infinite;
+            }
+
+            .involved-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+            }
+
+            .involved-container h2 {
+                font-size: 56px;
+                font-weight: 800;
+                margin-bottom: 24px;
+                letter-spacing: -1.5px;
+                color: var(--forest-green);
+            }
+
+            .involved-container p {
+                font-size: 20px;
+                margin-bottom: 60px;
+                color: var(--text-dark);
+            }
+
+            .involved-buttons {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .involved-btn {
+                padding: 18px 36px;
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+            .involved-btn.primary {
+                background: var(--gold);
+                color: white;
+            }
+
+            .involved-btn.primary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+            }
+
+            .involved-btn.secondary {
+                background: var(--forest-green);
+                color: white;
+            }
+
+            .involved-btn.secondary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(27, 67, 50, 0.4);
+            }
+
+            .involved-btn.outline {
+                background: transparent;
+                color: var(--forest-green);
+                border: 2px solid var(--forest-green);
+            }
+
+            .involved-btn.outline:hover {
+                background: var(--forest-green);
+                color: white;
+            }
+
+            /* Footer */
+            footer {
+                background: var(--forest-green);
+                color: var(--cream);
+                padding: 30px 75px 20px;
+            }
+
+            .footer-columns-wrapper {
+                display: flex;
+                margin-bottom: 40px;
+            }
+
+            .footer-container {
+                width: 75%;
+                flex-grow: 1;
+            }
+
+            .footer-container2 {
+                width: 35%;
+                flex-grow: 1;
+            }
+
+            .footer-about h3 {
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: var(--gold);
+            }
+
+            .footer-taxID h3 {
+                width 50%;
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: var(--gold);
+            }
+
+            .footer-about p {
+                width: 85%;
+                font-size: px;
+                line-height: 1.6;
+            }
+
+            .footer-links h4 {
+                font-size: 36px;
+                font-weight: 600;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--gold);
+            }
+            .footer-links ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                gap: 30px;
+            }
+
+            .footer-links ul li {
+                margin-bottom: 20px;
+            }
+
+            .footer-links a {
+                color: var(--mint);
+                font-size: 4rem;
+                transition: color 0.3s;
+            }
+
+            .footer-links a:hover {
+                color: var(--off-white);
+            }
+
+            .footer-links b {
+                color: var(--sage);
+                font-size: 24px;
+                transition: color 0.3s;
+            }
+
+            .footer-links.b ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                gap: 20px;
+            }
+
+            .footer-links.b ul li a {
+                font-size: 1.5rem;
+            }
+
+
+            .footer-links b:hover {
+                color: var(--off-white);
+            }
+
+            .seal img {
+
+                width: 250px;
+                height: 250px;
+
+                display: block;
+               margin-top: 200px;
+               margin-left: calc(50% - 400px + 100px);
+            }
+
+            .footer-bottom {
+                text-align: center;
+                padding-top: 40px;
+                font-size: 1rem;
+                border-top: 1px solid rgba(202, 210, 197, 0.2);
+                opacity: 0.7;
+            }
+
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 42px;
+                }
+                .hero-tagline {
+                    font-size: 24px;
+                }
+                .hero p {
+                    font-size: 18px;
+                }
+                .mission h2,
+                .services h2,
+                .values h2,
+                .story-header h2,
+                .involved-container h2 {
+                    font-size: 36px;
+                }
+                .story-highlight {
+                    grid-template-columns: 1fr;
+                }
+                .footer-container {
+                    grid-template-columns: 1fr;
+                }
+                .nav-links {
+                    display: none;
+                }
+                .cta-buttons {
+                    flex-direction: column;
+                }
+                .involved-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="navbar">
+            <div class="nav-container">
+                <div class="logo">Alexandria House</div>
+                <ul class="nav-links">
+                    <li><a href="#mission">Our Mission</a></li>
+                    <li><a href="#services">What We Do</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                    <li><a href="#involved">Get Involved</a></li>
+                </ul>
+                <a href="#donate" class="donate-btn">Donate</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <!-- Replace this div with your video element -->
+
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="images/ah.mp4" type="video/mp4" />
+            </video>
+            <!--
         <div class="hero-background-placeholder"></div>-->
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-tagline">Since 1996</div>
-            <h1>A House of Hospitality and Hope</h1>
-            <p>Providing safe and supportive housing for women and children experiencing homelessness and trauma. Together, we build pathways from crisis to stability to permanent housing.</p>
-            <div class="cta-buttons">
-                <a href="#services" class="cta-primary">Learn About Our Programs</a>
-                <a href="#involved" class="cta-secondary">Ways to Help</a>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-tagline">Since 1996</div>
+                <h1>A House of Hospitality and Hope</h1>
+                <p>
+                    Providing safe and supportive housing for women and children experiencing homelessness and trauma.
+                    Together, we build pathways from crisis to stability to permanent housing.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#services" class="cta-primary">Learn About Our Programs</a>
+                    <a href="#involved" class="cta-secondary">Ways to Help</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="mission" id="mission">
-        <h2>Our Mission</h2>
-        <p>Alexandria House offers a continuum of support as people move from crisis situations to financial and emotional stability, and ultimately to permanent housing. We serve our broader community by providing wellness, educational and enrichment opportunities and resources to meet the basic needs for our neighbors.</p>
-        <p>We are intentionally multicultural and anti-racist and are committed to addressing the systemic injustices that keep women and families disenfranchised and living in poverty.</p>
-    </section>
+        <section class="mission" id="mission">
+            <h2>Our Mission</h2>
+            <p>
+                Alexandria House offers a continuum of support as people move from crisis situations to financial and
+                emotional stability, and ultimately to permanent housing. We serve our broader community by providing
+                wellness, educational and enrichment opportunities and resources to meet the basic needs for our
+                neighbors.
+            </p>
+            <p>
+                We are intentionally multicultural and anti-racist and are committed to addressing the systemic
+                injustices that keep women and families disenfranchised and living in poverty.
+            </p>
+        </section>
 
-    <section class="photo-showcase">
-        <div class="photo-grid">
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Safe Housing</h3>
-                    <p>Creating spaces of security and comfort</p>
+        <section class="photo-showcase">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Safe Housing</h3>
+                        <p>Creating spaces of security and comfort</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Community Support</h3>
+                        <p>Building connections that heal and empower</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Educational Programs</h3>
+                        <p>Providing pathways to growth and opportunity</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Children's Services</h3>
+                        <p>Nurturing the next generation</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Wellness Resources</h3>
+                        <p>Supporting physical and mental health</p>
+                    </div>
+                </div>
+                <div class="photo-item">
+                    <div class="photo-caption">
+                        <h3>Community Events</h3>
+                        <p>Bringing neighbors together</p>
+                    </div>
                 </div>
             </div>
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Community Support</h3>
-                    <p>Building connections that heal and empower</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Educational Programs</h3>
-                    <p>Providing pathways to growth and opportunity</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Children's Services</h3>
-                    <p>Nurturing the next generation</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Wellness Resources</h3>
-                    <p>Supporting physical and mental health</p>
-                </div>
-            </div>
-            <div class="photo-item">
-                <div class="photo-caption">
-                    <h3>Community Events</h3>
-                    <p>Bringing neighbors together</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="impact-stats">
-        <div class="stats-container">
-            <div class="stat">
-                <div class="stat-number" data-target="28">28</div>
-                <div class="stat-label">Years of Service</div>
+        <section class="impact-stats">
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-number" data-target="28">28</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="100">100</div>
+                    <div class="stat-label">Families Served Annually</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="85">85</div>
+                    <div class="stat-label">Move to Permanent Housing</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="1000">1000</div>
+                    <div class="stat-label">Community Members Reached</div>
+                </div>
             </div>
-            <div class="stat">
-                <div class="stat-number" data-target="100">100</div>
-                <div class="stat-label">Families Served Annually</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" data-target="85">85</div>
-                <div class="stat-label">Move to Permanent Housing</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number" data-target="1000">1000</div>
-                <div class="stat-label">Community Members Reached</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="services" id="services">
-        <h2>What We Provide</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-image"></div>
-                <div class="service-content">
-                    <h3>Safe Housing</h3>
-                    <p>We provide secure, supportive transitional housing for women and children experiencing homelessness, creating a foundation for stability and growth.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
+        <section class="services" id="services">
+            <h2>What We Provide</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-image"></div>
+                    <div class="service-content">
+                        <h3>Safe Housing</h3>
+                        <p>
+                            We provide secure, supportive transitional housing for women and children experiencing
+                            homelessness, creating a foundation for stability and growth.
+                        </p>
+                        <a href="#" class="learn-more">Learn More →</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image"></div>
+                    <div class="service-content">
+                        <h3>Case Management</h3>
+                        <p>
+                            Individualized support and resources to help families navigate systems, access services, and
+                            build pathways to permanent housing and stability.
+                        </p>
+                        <a href="#" class="learn-more">Learn More →</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image"></div>
+                    <div class="service-content">
+                        <h3>Educational Programs</h3>
+                        <p>
+                            Enrichment opportunities including job training, financial literacy, parenting classes, and
+                            educational workshops for residents and community members.
+                        </p>
+                        <a href="#" class="learn-more">Learn More →</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image"></div>
+                    <div class="service-content">
+                        <h3>Community Resources</h3>
+                        <p>
+                            Wellness services, basic needs assistance, and connection to community resources that
+                            support healing, growth, and long-term success.
+                        </p>
+                        <a href="#" class="learn-more">Learn More →</a>
+                    </div>
                 </div>
             </div>
-            <div class="service-card">
-                <div class="service-image"></div>
-                <div class="service-content">
-                    <h3>Case Management</h3>
-                    <p>Individualized support and resources to help families navigate systems, access services, and build pathways to permanent housing and stability.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
+        </section>
+        <footer>
+            <div class="footer-columns-wrapper">
+                <div class="footer-container">
+                    <div class="footer-about">
+                        <h3>Alexandria House</h3>
+                        <p>
+                            Since 1996, Alexandria House has helped hundreds of women reach safe and supportive housing.
+                            Every dollar that is donated goes directly to help fund programs like housing, food, child
+                            care, counseling, financial literacy, job readiness, and other activities to help families
+                            transition from homelessness to permanent housing. Together, we can make a difference in the
+                            lives of the people who are part of the Alexandria House community.
+                        </p>
+                    </div>
+
+                    <div class="footer-links a">
+                        <h4></h4>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/AlexandriaHouseLA/" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/alexandriahousela/?hl=en" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links b">
+                        <ul>
+                            <li><a href="tel:+213381-2649">(213) 381-2649</a></li>
+                            <li><a href="mailto:info@alexandriahouse.org">info@alexandriahouse.org</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links b">
+                        <ul>
+                            <li>
+                                <a
+                                    href="https://www.google.com/maps/place/426+S+Alexandria+Ave,+Los+Angeles,+CA+90020/@34.0663213,-118.2975883,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c762e95a8407:0xe7b5ed162b3402f5!8m2!3d34.0663213!4d-118.2975883!16s%2Fg%2F11bw3y0ql6?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">
+                                    📌 426 S. Alexandria Avenue Los Angeles, CA 90020
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-taxID">
+                        <h3>Alexandria House Tax ID: 95-4809755</h3>
+                    </div>
+                </div>
+                <div class="footer-container2"></div>
+                <div class="seal">
+                    <img src="images/transparency.png" />
                 </div>
             </div>
-            <div class="service-card">
-                <div class="service-image"></div>
-                <div class="service-content">
-                    <h3>Educational Programs</h3>
-                    <p>Enrichment opportunities including job training, financial literacy, parenting classes, and educational workshops for residents and community members.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
-                </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script>
+                    Alexandria House is a 501(c)3 non-profit organization.
+                </p>
             </div>
-            <div class="service-card">
-                <div class="service-image"></div>
-                <div class="service-content">
-                    <h3>Community Resources</h3>
-                    <p>Wellness services, basic needs assistance, and connection to community resources that support healing, growth, and long-term success.</p>
-                    <a href="#" class="learn-more">Learn More →</a>
-                </div>
-            </div>
+        </footer>
+        ```
+    </body>
+</html>
