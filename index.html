@@ -235,5 +235,47 @@
                 </p>
             </div>
         </footer>
+        
+        <script>
+            
+        //animated the numbers!
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 300; 
+
+        const animateCounters = () => {
+        counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / speed;
+                let count = 0;
+
+                const updateCount = () => {
+                    count += increment;
+                    if (count < target) {
+                        counter.textContent = Math.ceil(count);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCount();
+            });
+        };
+
+        const statsSection = document.querySelector('.impact-stats');
+            let statsShown = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !statsShown) {
+                    animateCounters();
+                    statsShown = true;
+                }
+            }, {
+            threshold: 0.4
+            });
+
+        observer.observe(statsSection);
+        </script>
+
     </body>
 </html>
