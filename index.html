@@ -173,16 +173,8 @@
             <div class="footer-columns-wrapper">
                 <div class="footer-container">
                     <div class="footer-about">
-                        <h3>Alexandria House</h3>
-                        <p>
-                            Since 1996, Alexandria House has helped hundreds of women reach safe and supportive housing.
-                            Every dollar that is donated goes directly to help fund programs like housing, food, child
-                            care, counseling, financial literacy, job readiness, and other activities to help families
-                            transition from homelessness to permanent housing. Together, we can make a difference in the
-                            lives of the people who are part of the Alexandria House community.
-                        </p>
+                        <h3>Contact Us</h3>
                     </div>
-
                     <div class="footer-links a">
                         <h4></h4>
                         <ul>
@@ -201,20 +193,35 @@
 
                     <div class="footer-links b">
                         <ul>
-                            <li><a href="tel:+213381-2649">(213) 381-2649</a></li>
-                            <li><a href="mailto:info@alexandriahouse.org">info@alexandriahouse.org</a></li>
+                            <li>
+                                <a href="tel:+2133812649"> <i class="fa-solid fa-phone"></i> (213) 381-2649 </a>
+                            </li>
                         </ul>
                     </div>
+
                     <div class="footer-links b">
                         <ul>
                             <li>
-                                <a
-                                    href="https://www.google.com/maps/place/426+S+Alexandria+Ave,+Los+Angeles,+CA+90020/@34.0663213,-118.2975883,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c762e95a8407:0xe7b5ed162b3402f5!8m2!3d34.0663213!4d-118.2975883!16s%2Fg%2F11bw3y0ql6?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D">
-                                    📍 426 S. Alexandria Avenue Los Angeles, CA 90020
+                                <a href="mailto:info@alexandriahouse.org">
+                                    <i class="fa-solid fa-envelope"></i> info@alexandriahouse.org
                                 </a>
                             </li>
                         </ul>
                     </div>
+
+                    <div class="footer-links b">
+                        <ul>
+                            <li>
+                                <a
+                                    href="https://www.google.com/maps/place/426+S+Alexandria+Ave,+Los+Angeles,+CA+90020"
+                                    target="_blank">
+                                    <i class="fa-solid fa-location-dot"></i> 426 S. Alexandria Avenue Los Angeles, CA
+                                    90020
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="footer-taxID">
                         <h3>Alexandria House Tax ID: 95-4809755</h3>
                     </div>
@@ -235,47 +242,48 @@
                 </p>
             </div>
         </footer>
-        
+
         <script>
-            
-        //animated the numbers!
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 300; 
+            //animated the numbers!
+            const counters = document.querySelectorAll(".stat-number");
+            const speed = 300;
 
-        const animateCounters = () => {
-        counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const increment = target / speed;
-                let count = 0;
+            const animateCounters = () => {
+                counters.forEach((counter) => {
+                    const target = +counter.getAttribute("data-target");
+                    const increment = target / speed;
+                    let count = 0;
 
-                const updateCount = () => {
-                    count += increment;
-                    if (count < target) {
-                        counter.textContent = Math.ceil(count);
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
+                    const updateCount = () => {
+                        count += increment;
+                        if (count < target) {
+                            counter.textContent = Math.ceil(count);
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
 
-                updateCount();
-            });
-        };
+                    updateCount();
+                });
+            };
 
-        const statsSection = document.querySelector('.impact-stats');
+            const statsSection = document.querySelector(".impact-stats");
             let statsShown = false;
 
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting && !statsShown) {
-                    animateCounters();
-                    statsShown = true;
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    if (entries[0].isIntersecting && !statsShown) {
+                        animateCounters();
+                        statsShown = true;
+                    }
+                },
+                {
+                    threshold: 0.4
                 }
-            }, {
-            threshold: 0.4
-            });
+            );
 
-        observer.observe(statsSection);
+            observer.observe(statsSection);
         </script>
-
     </body>
 </html>
