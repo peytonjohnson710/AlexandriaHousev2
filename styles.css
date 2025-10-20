@@ -779,6 +779,101 @@ nav.scrolled {
     color: white;
 }
 
+/* Crisis Help Section */
+.help {
+    background: white;
+    /*padding: 120px 40px;*/
+    position: relative;
+    overflow: hidden;
+}
+
+.help-container {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.help-block1 {
+    background: var(--mint);
+    padding: 1px 1px;
+    width: 100%;
+    height: 10%;
+
+   display: block;
+}
+
+.help-columns-wrapper {
+            columns: 2 auto; /* Creates 2 columns, auto-adjusting width */
+            column-gap: 40px; /* Gap between columns */
+        }
+
+
+.help h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 60px;
+    letter-spacing: -1.5px;
+    color: var(--forest-green);
+    text-align: center;
+}
+
+.h3 {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 60px;
+    letter-spacing: -1.5px;
+    color: var(--forest-green);
+    text-align: center;
+}
+
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.help-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(27, 67, 50, 0.12);
+}
+
+.help-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: var(--mint);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    transition: all 0.3s ease;
+}
+
+
+.help-item h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--forest-green);
+}
+
+.help-item p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+.helpic img {
+    background: var(--forest-green);
+    padding: 1px 1px;
+    width: 100%;
+    height: 10%;
+
+   display: block;
+   
+}
+
 /* Footer */
 footer {
     background: var(--forest-green);
