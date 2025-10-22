@@ -781,7 +781,7 @@ nav.scrolled {
 
 /* Crisis Help Section */
 .help {
-    background: white;
+    background: var(--off-white);
     /*padding: 120px 40px;*/
     position: relative;
     overflow: hidden;
@@ -795,8 +795,8 @@ nav.scrolled {
 }
 
 .help-block1 {
+    
     background: var(--mint);
-    padding: 1px 1px;
     width: 100%;
     height: 10%;
 
@@ -818,60 +818,78 @@ nav.scrolled {
     text-align: center;
 }
 
-.h3 {
-    font-size: 56px;
-    font-weight: 800;
-    margin-bottom: 60px;
-    letter-spacing: -1.5px;
-    color: var(--forest-green);
-    text-align: center;
-}
-
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
 }
 
-.help-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(27, 67, 50, 0.12);
-}
-
-.help-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 24px;
-    background: var(--mint);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 36px;
-    transition: all 0.3s ease;
-}
-
 
 .help-item h3 {
+    text-align: center;
+    padding: 10px 30px;
+    align-items: center;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 400;
     margin-bottom: 16px;
-    color: var(--forest-green);
+    color: var(--text-dark);
+    
+}
+
+.help-item h4 {
+    text-align: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+    
 }
 
 .help-item p {
-    font-size: 16px;
+    text-align: center;
+    font-size: 40px;
     line-height: 1.6;
     color: var(--text-dark);
 }
+
+.help-item .p2 {
+  text-align: center;
+  padding: 10px 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--white, #fff);
+}
+
+.helpic {
+  position: relative;       
+  display: inline-block;
+  width: 100%;
+}
+
 .helpic img {
-    background: var(--forest-green);
-    padding: 1px 1px;
+    background: var(--mint);
+    
+  
     width: 100%;
-    height: 10%;
+    height: auto;
 
    display: block;
-   
+   opacity: 0.75;
+}
+
+.helpic h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  color: var(--white, #fff);
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  text-align: center;
+  margin: 0;
+  z-index: 2; 
 }
 
 /* Footer */
