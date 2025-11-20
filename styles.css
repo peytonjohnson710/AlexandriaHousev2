@@ -57,7 +57,7 @@ nav.scrolled {
 
 .nav-links {
     display: flex;
-    gap: 40px;
+    gap: 80px;
     list-style: none;
 }
 
@@ -89,6 +89,33 @@ nav.scrolled {
     width: 100%;
 }
 
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--forest-green);
+  min-width: 160px;
+  flex-direction: column;
+}
+
+.nav-dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-dropdown-content a:hover {
+   color: var(--sage);
+}
+
+.nav-dropdown:hover .nav-dropdown-content {display: block;}
+
 .donate-btn {
     background: var(--gold);
     color: white;
@@ -105,6 +132,8 @@ nav.scrolled {
     box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
     background: #c69563;
 }
+
+
 
 /* Hero Section */
 .hero {
