@@ -490,23 +490,48 @@ nav.scrolled {
 
 .service-image {
     height: 250px;
-    background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
     position: relative;
     overflow: hidden;
 }
 
+.service-card:nth-child(1) .service-image {
+    background-image: url("images/housing.png");  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .service-card:nth-child(2) .service-image {
-    background: linear-gradient(135deg, var(--mint) 0%, var(--sage) 100%);
+  background-image: url("images/case.png");
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .service-card:nth-child(3) .service-image {
-    background: linear-gradient(135deg, var(--gold) 0%, #b8925e 100%);
+  background-image:  url("images/edu.png");
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .service-card:nth-child(4) .service-image {
-    background: linear-gradient(135deg, var(--forest-green) 0%, #0d2419 100%);
+  background-image: url("images/community.jpg");
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
+.service-card:nth-child(5) .service-image {
+  background-image:  url("images/health.jpg");
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.service-card:nth-child(6) .service-image {
+  background-image:  url("images/econempower.png");
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
 .service-content {
     padding: 32px;
 }
@@ -824,7 +849,7 @@ nav.scrolled {
 }
 
 .help-block1 {
-    
+
     background: var(--mint);
     width: 100%;
     height: 10%;
@@ -862,7 +887,7 @@ nav.scrolled {
     font-weight: 400;
     margin-bottom: 16px;
     color: var(--text-dark);
-    
+
 }
 
 .help-item h4 {
@@ -872,7 +897,7 @@ nav.scrolled {
     font-weight: 400;
     margin-bottom: 16px;
     color: var(--text-dark);
-    
+
 }
 
 .help-item p {
@@ -891,15 +916,15 @@ nav.scrolled {
 }
 
 .helpic {
-  position: relative;       
+  position: relative;
   display: inline-block;
   width: 100%;
 }
 
 .helpic img {
     background: var(--mint);
-    
-  
+
+
     width: 100%;
     height: auto;
 
@@ -911,14 +936,14 @@ nav.scrolled {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);  
+  transform: translate(-50%, -50%);
   color: var(--white, #fff);
   font-size: 56px;
   font-weight: 800;
   letter-spacing: -1.5px;
   text-align: center;
   margin: 0;
-  z-index: 2; 
+  z-index: 2;
 }
 
 /* Footer */
