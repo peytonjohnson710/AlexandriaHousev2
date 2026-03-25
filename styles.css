@@ -1049,6 +1049,154 @@ nav.scrolled {
     }
 }
 
+.nav-active {
+    color: var(--gold) !important;
+}
+ 
+/* Hero variant for resources page */
+.resources-hero {
+    background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
+    min-height: 80vh;
+}
+ 
+/* Intro banner */
+.resources-intro {
+    background: var(--forest-green);
+    padding: 48px 40px;
+}
+ 
+.resources-intro-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+ 
+.resources-intro-inner p {
+    font-size: 20px;
+    color: var(--cream);
+    line-height: 1.75;
+    margin: 0;
+}
+ 
+/* Resources section spacing & subtitle */
+.resources-section {
+    padding: 100px 40px;
+}
+ 
+.resources-section-sub {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-dark);
+    max-width: 700px;
+    margin: -48px auto 60px;
+}
+ 
+/* Alternate dark background for basic needs section */
+.resources-dark {
+    background: white;
+}
+ 
+/* Service card image overrides for resources page */
+.resources-img-mental {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--forest-green) 100%);
+    height: 220px;
+}
+ 
+.resources-img-health {
+    background: linear-gradient(135deg, var(--mint) 0%, var(--sage) 100%);
+    height: 220px;
+}
+ 
+.resources-img-children {
+    background: linear-gradient(135deg, var(--gold) 0%, #b8865a 100%);
+    height: 220px;
+}
+ 
+.resources-img-food {
+    background: linear-gradient(135deg, #4a7c59 0%, var(--forest-green) 100%);
+    height: 220px;
+}
+ 
+.resources-img-clothing {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--mint) 100%);
+    height: 220px;
+}
+ 
+.resources-img-transport {
+    background: linear-gradient(135deg, var(--sage) 0%, #3a5a52 100%);
+    height: 220px;
+}
+ 
+/* Community connections grid */
+.resources-connections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+}
+ 
+.resources-connection-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+    transition: all 0.4s ease;
+    border-left: 4px solid var(--mint);
+}
+ 
+.resources-connection-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
+    border-left-color: var(--gold);
+}
+ 
+.resources-connection-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(132, 169, 140, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--forest-green);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+ 
+.resources-connection-card:hover .resources-connection-icon {
+    background: var(--forest-green);
+    color: var(--gold);
+}
+ 
+.resources-connection-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--forest-green);
+    margin-bottom: 12px;
+}
+ 
+.resources-connection-card p {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+ 
+/* Responsive */
+@media (max-width: 768px) {
+    .resources-intro-inner p {
+        font-size: 17px;
+    }
+    .resources-connections-grid {
+        grid-template-columns: 1fr;
+    }
+    .resources-section {
+        padding: 60px 24px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 42px;
