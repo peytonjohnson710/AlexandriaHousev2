@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educational Programs | Alexandria House</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* Small enhancements only — all base styles come from styles.css */
+
+        /* Sticky section jump-nav */
+        .page-subnav {
+            position: sticky;
+            top: 70px;
+            z-index: 80;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .page-subnav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .page-subnav-inner::-webkit-scrollbar { display: none; }
+        .page-subnav-inner a {
+            flex: 0 0 auto;
+            padding: 0.9rem 1.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #888;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .page-subnav-inner a:hover {
+            color: var(--primary, #c4621a);
+            border-bottom-color: var(--primary, #c4621a);
+        }
+
+        /* SUSLA card: visually distinguished as a link */
+        a.service-card {
+            text-decoration: none;
+            display: block;
+            position: relative;
+            border: 2px solid transparent;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        a.service-card:hover {
+            border-color: var(--primary, #c4621a);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+        }
+        .service-card-link-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary, #c4621a);
+        }
+
+        /* Instagram pill link */
+        .ig-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 0.9rem;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid currentColor;
+            transition: background 0.2s, opacity 0.2s;
+        }
+        .ig-pill:hover { opacity: 0.75; }
+
+        /* Section intro text for dark sections */
+        .resources-section-sub {
+            max-width: 680px;
+            margin: -0.5rem auto 2.5rem;
+            text-align: center;
+        }
+
+        /* Decorative top accent on connection cards in dark section */
+        .resources-dark .resources-connection-card {
+            border-top: 3px solid rgba(255,255,255,0.12);
+        }
+
+        /* Small hover lift on all service cards */
+        .service-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.09);
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">Alexandria House</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html#mission">Our Mission</a></li>
+                <li><a href="index.html#services">What We Do</a></li>
+                <li class="nav-dropdown">
+                    <a href="get_involved.html">Get Involved</a>
+                    <div class="nav-dropdown-content">
+                        <a href="get_involved.html#volunteer">Volunteer</a>
+                        <a href="get_involved.html#partner">Partner With Us</a>
+                        <a href="get_involved.html#events">Events</a>
+                        <a href="https://www.amazon.com/hz/wishlist/ls/WO4AZPR4QC0J?ref_=wl_fv_le" target="_blank">Amazon Wishlist</a>
+                    </div>
+                </li>
+                <li><a href="community-resources.html">Community Resources</a></li>
+                <li><a href="help.html">Crisis Help</a></li>
+            </ul>
+            <a href="#donate" class="donate-btn">Donate</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero resources-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-tagline">Learn. Grow. Succeed.</div>
+            <h1>Educational Programs</h1>
+            <p>
+                Empowering women and children through education, entrepreneurship, and enrichment
+                opportunities that build the skills and confidence needed for lasting independence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Intro Banner -->
+    <section class="resources-intro">
+        <div class="resources-intro-inner">
+            <p>
+                Education is central to Alexandria House's mission of empowering women to achieve
+                lasting self-sufficiency. From early childhood care to job development and
+                entrepreneurship training, our programs meet families where they are — and help
+                them reach where they want to go. Many programs are open to residents, participants,
+                and neighbors across the Mid-Wilshire community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sticky section jump-nav -->
+    <nav class="page-subnav" aria-label="Page sections">
+        <div class="page-subnav-inner">
+            <a href="#adult-education">Adult Education</a>
+            <a href="#youth-programs">Youth Programs</a>
+            <a href="#susla-spotlight">Start-Up Sisterhood LA</a>
+        </div>
+    </nav>
+
+    <!-- Adult Education -->
+    <section class="services resources-section" id="adult-education">
+        <h2>Adult Education &amp; Economic Empowerment</h2>
+        <div class="service-grid">
+
+            <!-- SUSLA — links down to spotlight -->
+            <a href="#susla-spotlight" class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-store"></i> Start-Up Sisterhood LA (SUSLA)</h3>
+                    <p>
+                        Our flagship 13-week entrepreneurship program gives women the training,
+                        mentorship, and resources to launch and grow their own small businesses —
+                        from writing a business plan to landing their first client.
+                    </p>
+                    <span class="service-card-link-hint">
+                        See the full program <i class="fa-solid fa-arrow-down fa-xs"></i>
+                    </span>
+                </div>
+            </a>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-briefcase"></i> Job Development</h3>
+                    <p>
+                        Our Director of Job Development and Entrepreneurship works one-on-one with
+                        residents to identify strengths, build career plans, and connect with
+                        employers — supporting every step toward economic stability.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-piggy-bank"></i> Financial Literacy Classes</h3>
+                    <p>
+                        Interactive workshops on budgeting, saving, credit-building, and banking
+                        give participants the financial knowledge they need to achieve and maintain
+                        independence long after leaving Alexandria House.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Youth Programs -->
+    <section class="services resources-section resources-dark" id="youth-programs">
+        <h2>Youth Educational Programs</h2>
+        <p class="resources-section-sub">
+            When mothers pursue work or education, their children need a safe, nurturing place
+            to grow. Alexandria House provides a full continuum of care — from infant programs
+            through school-age enrichment.
+        </p>
+        <div class="service-grid">
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-baby"></i> Early Childhood Education (ECE)</h3>
+                    <p>
+                        Our ECE program serves babies and toddlers with a low child-to-staff ratio,
+                        providing the individualized attention and developmental support the youngest
+                        members of our community need most.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-book-open-reader"></i> Afterschool Program (K–5)</h3>
+                    <p>
+                        A free afterschool program for Kindergarten through 5th grade combining
+                        enrichment activities, reading development, and tutoring — so children
+                        stay on track while their parents pursue their goals.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-sun"></i> Day Camp (LAUSD Breaks)</h3>
+                    <p>
+                        During LAUSD school breaks, our afterschool program becomes a full-day
+                        camp with activities and field trips — keeping children in a safe,
+                        stimulating environment all year long.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3><i class="fa-solid fa-children"></i> Childcare for Families in Programs</h3>
+                    <p>
+                        High-quality childcare is available to parents while they work, attend
+                        school, or participate in Alexandria House programs — removing a critical
+                        barrier to self-sufficiency.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SUSLA Spotlight -->
+    <section class="services resources-section" id="susla-spotlight">
+        <h2>Spotlight: Start-Up Sisterhood LA</h2>
+        <p class="resources-section-sub">
+            SUSLA was born from listening. During COVID-19, many women in our community lost their
+            livelihoods in the service industry. In response, Alexandria House developed this
+            13-week entrepreneurship program — and today, SUSLA graduates run businesses across
+            Los Angeles. Follow along:
+            <a href="https://www.instagram.com/startupsisterhoodla/" target="_blank" class="ig-pill" style="color: #c4621a;">
+                <i class="fa-brands fa-instagram"></i> @startupsisterhoodla
+            </a>
+        </p>
+        <div class="resources-connections-grid">
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>Business Planning</h3>
+                <p>Participants build a complete business plan from concept to launch, guided step-by-step by instructors and mentors.</p>
+            </div>
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-landmark"></i></div>
+                <h3>Banking &amp; Credit</h3>
+                <p>Workshops on opening business accounts, building credit, and establishing the financial foundation every small business needs.</p>
+            </div>
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>Website &amp; Marketing</h3>
+                <p>Training in building a web presence and developing marketing strategies to reach customers and grow a brand.</p>
+            </div>
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>1-on-1 Mentorship</h3>
+                <p>Each participant is paired with a mentor providing personalized support in bookkeeping, accounting, design, and more.</p>
+            </div>
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-id-card"></i></div>
+                <h3>Licensing &amp; Legal Basics</h3>
+                <p>Step-by-step guidance on registering a business, obtaining licenses, and meeting California requirements.</p>
+            </div>
+
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h3>SUSLA Graduate Catering</h3>
+                <p>Many graduates operate their own catering businesses. Support their work through our Top Chef catering vendor directory — contact us to learn more.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="resources-intro">
+        <div class="resources-intro-inner">
+            <p>
+                Want to support our educational programs as a tutor, workshop facilitator, or
+                SUSLA mentor? Volunteers make these programs possible.
+                <strong><a href="get_involved.html#volunteer" style="color: inherit;">Learn how to get involved &rarr;</a></strong>
+            </p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <h3>Contact Us</h3>
+                <p>
+                    <a href="tel:12133812649">(213) 381-2649</a><br>
+                    <a href="mailto:info@alexandriahouse.org">info@alexandriahouse.org</a>
+                </p>
+                <p>
+                    426 S. Alexandria Avenue<br>
+                    Los Angeles, CA 90020
+                </p>
+                <p class="tax-id">Alexandria House Tax ID: 95-4809755</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/alexandriahouse" target="_blank" aria-label="Facebook">
+                        <img src="images/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/alexandriahouse" target="_blank" aria-label="Instagram" style="width: 150px">
+                        <img src="images/instagram.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src="images/transparency.png" alt="Alexandria House Transparency">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Highlight active jump-nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const subLinks = document.querySelectorAll('.page-subnav a');
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    subLinks.forEach(l => { l.style.color = ''; l.style.borderBottomColor = 'transparent'; });
+                    const match = document.querySelector(`.page-subnav a[href="#${e.target.id}"]`);
+                    if (match) { match.style.color = '#c4621a'; match.style.borderBottomColor = '#c4621a'; }
+                }
+            });
+        }, { rootMargin: '-35% 0px -60% 0px' });
+        sections.forEach(s => io.observe(s));
+    </script>
+
+</body>
+</html>
