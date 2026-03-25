@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Economic Empowerment | Alexandria House</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ── Page-specific overrides ── */
+
+        /* Hero */
+        .econ-hero {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
+            min-height: 80vh;
+        }
+
+        /* Intro banner */
+        .econ-intro {
+            background: var(--forest-green);
+            padding: 56px 40px;
+        }
+        .econ-intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .econ-intro-inner p {
+            font-size: 20px;
+            color: var(--cream);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Pillar cards section */
+        .econ-pillars {
+            padding: 100px 40px;
+            background: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-pillars::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--mint);
+            opacity: 0.08;
+            border-radius: 50%;
+            top: 80px;
+            left: -150px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .econ-pillars::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--gold);
+            opacity: 0.06;
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            animation: pulse 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .econ-pillars h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -1.5px;
+            color: var(--forest-green);
+            position: relative;
+            z-index: 1;
+        }
+        .econ-pillars-sub {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 64px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Pillar grid */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 36px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+            transition: all 0.4s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 40px rgba(27, 67, 50, 0.15);
+        }
+
+        .pillar-icon-band {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        .pillar-card:nth-child(1) .pillar-icon-band { background: linear-gradient(135deg, var(--forest-green), var(--sage)); }
+        .pillar-card:nth-child(2) .pillar-icon-band { background: linear-gradient(135deg, var(--sage), var(--mint)); }
+        .pillar-card:nth-child(3) .pillar-icon-band { background: linear-gradient(135deg, #4a7c59, var(--forest-green)); }
+        .pillar-card:nth-child(4) .pillar-icon-band { background: linear-gradient(135deg, var(--mint), var(--sage)); }
+        .pillar-card:nth-child(5) .pillar-icon-band { background: linear-gradient(135deg, var(--gold), #b8865a); }
+        .pillar-card:nth-child(6) .pillar-icon-band { background: linear-gradient(135deg, var(--forest-green), #0d2419); }
+
+        .pillar-body {
+            padding: 32px;
+        }
+        .pillar-body h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .pillar-body p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+        
+        
+
+        /* ── Process / Journey section ── */
+        .econ-journey {
+            background: white;
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-journey::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: var(--sage);
+            opacity: 0.05;
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: pulse 5s ease-in-out infinite;
+        }
+        .econ-journey-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-journey h2 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--forest-green);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .econ-journey-sub {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 680px;
+            margin: 0 auto 72px;
+            line-height: 1.7;
+        }
+
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
+            position: relative;
+        }
+        /* Connector line */
+        .journey-steps::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(to right, var(--mint), var(--gold));
+            z-index: 0;
+        }
+
+        .journey-step {
+            text-align: center;
+            padding: 0 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--forest-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+            box-shadow: 0 6px 20px rgba(27, 67, 50, 0.25);
+            transition: all 0.3s ease;
+            border: 4px solid white;
+        }
+        .journey-step:hover .step-circle {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+        .journey-step h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 10px;
+        }
+        .journey-step p {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* ── Quote / Story highlight ── */
+        .econ-quote {
+            background: var(--sage);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-quote::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--forest-green);
+            opacity: 0.25;
+            border-radius: 50%;
+            top: -150px;
+            left: -150px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .econ-quote::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--gold);
+            opacity: 0.15;
+            border-radius: 50%;
+            bottom: -100px;
+            right: 80px;
+            animation: pulse 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .econ-quote-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .quote-mark {
+            font-size: 100px;
+            line-height: 0.6;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-bottom: 24px;
+            display: block;
+            font-family: Georgia, serif;
+        }
+        .econ-quote-inner blockquote {
+            font-size: 26px;
+            font-weight: 300;
+            line-height: 1.65;
+            color: white;
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+        .econ-quote-inner cite {
+            font-size: 16px;
+            color: var(--cream);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Partnerships / Resources ── */
+        .econ-resources {
+            background: var(--off-white);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-resources::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--mint);
+            opacity: 0.07;
+            border-radius: 50%;
+            top: 50%;
+            right: -200px;
+            transform: translateY(-50%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .econ-resources-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-resources h2 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--forest-green);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .econ-resources-sub {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 64px;
+            line-height: 1.7;
+        }
+        .resources-connections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .resources-connection-card {
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+            transition: all 0.4s ease;
+            border-left: 4px solid var(--mint);
+        }
+        .resources-connection-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
+            border-left-color: var(--gold);
+        }
+        .resources-connection-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(132, 169, 140, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--forest-green);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .resources-connection-card:hover .resources-connection-icon {
+            background: var(--forest-green);
+            color: var(--gold);
+        }
+        .resources-connection-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+        .resources-connection-card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Impact stats ── */
+        .econ-stats {
+            background: var(--forest-green);
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-stats::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--mint);
+            opacity: 0.15;
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        .econ-stats::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: var(--gold);
+            opacity: 0.1;
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: pulse 5s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        .econ-stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-stats h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            letter-spacing: -1px;
+            margin-bottom: 64px;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 12px;
+            letter-spacing: -2px;
+        }
+        .stat-label {
+            font-size: 17px;
+            color: var(--cream);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* ── CTA ── */
+        .econ-cta {
+            padding: 100px 40px;
+            background: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+        .econ-cta::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: var(--mint);
+            opacity: 0.1;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 5s ease-in-out infinite;
+        }
+        .econ-cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .econ-cta-inner h2 {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--forest-green);
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+        .econ-cta-inner p {
+            font-size: 19px;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .econ-pillars h2,
+            .econ-journey h2,
+            .econ-resources h2,
+            .econ-stats h2,
+            .econ-cta-inner h2 {
+                font-size: 36px;
+            }
+            .journey-steps::before { display: none; }
+            .econ-intro-inner p { font-size: 17px; }
+            .econ-quote-inner blockquote { font-size: 20px; }
+            .econ-pillars,
+            .econ-journey,
+            .econ-quote,
+            .econ-resources,
+            .econ-stats,
+            .econ-cta { padding: 60px 24px; }
+        }
+/* ── SUSLA Section ── */
+.susla-section {
+    background: var(--forest-green);
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.susla-section::before {
+    content: "";
+    position: absolute;
+    width: 500px; height: 500px;
+    background: var(--sage);
+    opacity: 0.18;
+    border-radius: 50%;
+    top: -150px; left: -150px;
+    animation: pulse 6s ease-in-out infinite;
+}
+.susla-section::after {
+    content: "";
+    position: absolute;
+    width: 400px; height: 400px;
+    background: var(--gold);
+    opacity: 0.1;
+    border-radius: 50%;
+    bottom: -100px; right: -100px;
+    animation: pulse 7s ease-in-out infinite;
+    animation-delay: 2s;
+}
+.susla-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+.susla-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+.susla-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+.susla-header h2 {
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+.susla-intro-text {
+    font-size: 18px;
+    color: var(--cream);
+    max-width: 720px;
+    line-height: 1.75;
+    margin: 0 auto 32px;
+}
+.susla-header-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.susla-btn {
+    padding: 13px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.susla-btn.gold {
+    background: var(--gold);
+    color: white;
+}
+.susla-btn.gold:hover {
+    background: #c69563;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 165, 116, 0.35);
+}
+.susla-btn.outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+.susla-btn.outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+.susla-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+.susla-left h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+    letter-spacing: -0.4px;
+}
+.susla-left p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--cream);
+    margin-bottom: 20px;
+}
+.susla-duration-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin-top: 8px;
+}
+.susla-duration-tag i { color: var(--gold); }
+.susla-curr-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.susla-curr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+.susla-curr-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 13px 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--cream);
+    font-weight: 500;
+}
+.susla-curr-item i { color: var(--gold); font-size: 13px; margin-top: 2px; flex-shrink: 0; }
+.susla-teen-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 28px 32px;
+}
+.susla-teen-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+.susla-teen-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(212, 165, 116, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.susla-teen-icon i { color: var(--gold); font-size: 20px; }
+.susla-teen-card h4 { font-size: 18px; font-weight: 700; color: white; margin: 0; }
+.susla-teen-card p { font-size: 14px; line-height: 1.65; color: var(--cream); margin-bottom: 16px; }
+.susla-teen-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.susla-teen-topics span {
+    background: rgba(212, 165, 116, 0.18);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+    .susla-layout { grid-template-columns: 1fr; gap: 40px; }
+    .susla-header h2 { font-size: 36px; }
+    .susla-curr-grid { grid-template-columns: 1fr; }
+    .susla-section { padding: 60px 24px; }
+    .susla-header-btns { flex-direction: column; align-items: center; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- ── Navigation ── -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration:none; color:inherit;">Alexandria House</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#mission">Our Mission</a></li>
+                <li><a href="index.html#services">What We Do</a></li>
+                <li class="nav-dropdown">
+                    <a href="get_involved.html">Get Involved</a>
+                    <div class="nav-dropdown-content">
+                        <a href="get_involved.html#volunteer">Volunteer</a>
+                        <a href="get_involved.html#partner">Partner With Us</a>
+                        <a href="get_involved.html#events">Events</a>
+                        <a href="https://www.amazon.com/hz/wishlist/ls/WO4AZPR4QC0J?ref_=wl_fv_le" target="_blank">Amazon Wishlist</a>
+                    </div>
+                </li>
+                <li><a href="help.html">Crisis Help</a></li>
+            </ul>
+            <a href="#donate" class="donate-btn">Donate</a>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero econ-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-tagline">Building Lasting Independence</div>
+            <h1>Economic Empowerment</h1>
+            <p>
+                We equip women and families with the financial knowledge, career skills,
+                and community connections they need to achieve lasting stability and independence.
+            </p>
+            <div class="cta-buttons">
+                <a href="#programs" class="cta-primary">Explore Our Programs</a>
+                <a href="get_involved.html" class="cta-secondary">Support This Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Intro banner ── -->
+    <div class="econ-intro">
+        <div class="econ-intro-inner">
+            <p>
+                Economic stability is the foundation of a safe, self-determined life. At Alexandria House,
+                our economic empowerment programs address the real barriers women face — from gaps in employment
+                history to limited credit and lack of childcare — providing personalized support every step of the way.
+            </p>
+        </div>
+    </div>
+
+    <!-- ── Program Pillars ── -->
+    <section class="econ-pillars" id="programs">
+        <h2>Our Program Areas</h2>
+        <p class="econ-pillars-sub">
+            Our holistic approach addresses every dimension of economic well-being,
+            meeting each resident where she is and building toward where she wants to go.
+        </p>
+        <div class="pillar-grid">
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">💼</div>
+                <div class="pillar-body">
+                    <h3>Job Readiness &amp; Employment</h3>
+                    <p>
+                        From resume writing and interview preparation to professional wardrobe support,
+                        we help residents enter or re-enter the workforce with confidence. Staff connect
+                        women with job placement partners and on-the-job training opportunities tailored
+                        to their goals and backgrounds.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">📚</div>
+                <div class="pillar-body">
+                    <h3>Education &amp; Skills Training</h3>
+                    <p>
+                        We support residents pursuing GED completion, vocational certifications,
+                        community college enrollment, and workforce development programs. Case managers
+                        help navigate financial aid, childcare, and scheduling so education remains
+                        achievable alongside family responsibilities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">🏦</div>
+                <div class="pillar-body">
+                    <h3>Financial Literacy</h3>
+                    <p>
+                        Workshops and one-on-one coaching cover budgeting, saving, credit building,
+                        banking basics, and debt management. We partner with community financial
+                        institutions to help residents open bank accounts, understand their credit
+                        reports, and develop personalized financial plans.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">🏠</div>
+                <div class="pillar-body">
+                    <h3>Housing Stability Planning</h3>
+                    <p>
+                        Securing permanent housing requires economic preparation. Our staff assist
+                        residents in saving for deposits, understanding tenant rights, navigating
+                        rental assistance programs, and building the rental history needed to qualify
+                        for stable, affordable housing in Los Angeles.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">🌱</div>
+                <div class="pillar-body">
+                    <h3>Benefits Navigation</h3>
+                    <p>
+                        Many families are entitled to public benefits they aren't yet receiving.
+                        We help residents access CalWORKs, CalFresh, Medi-Cal, childcare subsidies,
+                        utility assistance, and other safety-net programs that free up resources
+                        and provide a bridge to long-term self-sufficiency.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon-band">🤝</div>
+                <div class="pillar-body">
+                    <h3>Mentorship &amp; Peer Support</h3>
+                    <p>
+                        Sustained change is supported by community. Women at Alexandria House connect
+                        with mentors who have navigated similar paths, participate in peer support groups,
+                        and build networks that extend beyond their time in our program — creating
+                        lasting relationships rooted in shared resilience.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── Start Up Sisterhood LA (SUSLA) ── -->
+<section class="susla-section">
+    <div class="susla-inner">
+        <div class="susla-header">
+            <span class="susla-badge">Featured Program</span>
+            <h2>Start Up Sisterhood LA</h2>
+            <p class="susla-intro-text">
+                SUSLA provides the Alexandria House community with quality training, counseling,
+                and access to resources to pursue, develop, and succeed in a career or small business —
+                partnering with successful entrepreneurs who share their skills, connections, and knowledge.
+            </p>
+            <div class="susla-header-btns">
+                <a href="#entrepreneurs" class="susla-btn gold">
+                    <i class="fa-solid fa-users"></i> Meet the Entrepreneurs
+                </a>
+                <a href="#team" class="susla-btn outline">
+                    <i class="fa-solid fa-address-card"></i> Meet the Team
+                </a>
+            </div>
+        </div>
+
+        <div class="susla-layout">
+            <div class="susla-left">
+                <h3>A 13-Week Journey to Self-Sufficiency</h3>
+                <p>
+                    SUSLA's structured curriculum gives women the concrete tools to launch and grow a
+                    business or advance in their career. Through workshops led by community entrepreneurs
+                    and personalized mentorship, participants build real skills — and real confidence.
+                </p>
+                <p>
+                    The ultimate goal is financial self-sufficiency and the achievement of each
+                    participant's personal goals, on her own terms.
+                </p>
+                <div class="susla-duration-tag">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    13-week program
+                </div>
+            </div>
+
+            <div class="susla-right">
+                <div class="susla-curr-title">What the Curriculum Covers</div>
+                <div class="susla-curr-grid">
+                    <div class="susla-curr-item"><i class="fa-solid fa-file-contract"></i>How to get a business license</div>
+                    <div class="susla-curr-item"><i class="fa-solid fa-chart-line"></i>Developing a business plan</div>
+                    <div class="susla-curr-item"><i class="fa-solid fa-piggy-bank"></i>Banking basics &amp; credit</div>
+                    <div class="susla-curr-item"><i class="fa-solid fa-globe"></i>Building a website</div>
+                    <div class="susla-curr-item"><i class="fa-solid fa-bullhorn"></i>Marketing strategies</div>
+                    <div class="susla-curr-item"><i class="fa-solid fa-star"></i>Quality control</div>
+                </div>
+
+                <div class="susla-teen-card">
+                    <div class="susla-teen-card-header">
+                        <div class="susla-teen-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4>Teen Financial Literacy Workshops</h4>
+                    </div>
+                    <p>
+                        We extend economic empowerment to the next generation. Our teen workshops equip
+                        young people in the Alexandria House community with foundational money skills
+                        to build a confident financial future.
+                    </p>
+                    <div class="susla-teen-topics">
+                        <span>Budgeting</span>
+                        <span>Saving &amp; goals</span>
+                        <span>Understanding credit</span>
+                        <span>Banking basics</span>
+                        <span>Avoiding debt traps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- ── The Journey ── -->
+    <section class="econ-journey">
+        <div class="econ-journey-inner">
+            <h2>The Path to Independence</h2>
+            <p class="econ-journey-sub">
+                Every resident's journey is unique, but our individualized approach follows
+                a consistent framework designed to build confidence and capability at every stage.
+            </p>
+            <div class="journey-steps">
+
+                <div class="journey-step">
+                    <div class="step-circle"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Welcome &amp; Assessment</h3>
+                    <p>A dedicated case manager meets with each resident to understand her history, strengths, and goals.</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="step-circle"><i class="fa-solid fa-map"></i></div>
+                    <h3>Personalized Plan</h3>
+                    <p>Together, resident and case manager create a step-by-step stability plan with clear, realistic milestones.</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="step-circle"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Skills &amp; Resources</h3>
+                    <p>Residents engage in workshops, job training, financial coaching, and benefits enrollment.</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="step-circle"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Employment &amp; Savings</h3>
+                    <p>With employment secured, residents begin building savings and preparing for permanent housing.</p>
+                </div>
+
+                <div class="journey-step">
+                    <div class="step-circle"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h3>Permanent Housing</h3>
+                    <p>Residents move into stable, independent housing with ongoing support during their transition.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Quote ── -->
+    <section class="econ-quote">
+        <div class="econ-quote-inner">
+            <span class="quote-mark">"</span>
+            <blockquote>
+                Economic empowerment is not just about a paycheck — it is about giving a woman
+                the tools to make her own choices, protect her family, and build a future
+                that belongs entirely to her.
+            </blockquote>
+            <cite>— Alexandria House Staff</cite>
+        </div>
+    </section>
+
+    <!-- ── Community Resources ── -->
+    <section class="econ-resources">
+        <div class="econ-resources-inner">
+            <h2>Community Partnerships</h2>
+            <p class="econ-resources-sub">
+                We collaborate with a network of community organizations, employers, and institutions
+                to connect residents with the broadest possible range of opportunities and resources.
+            </p>
+            <div class="resources-connections-grid">
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-landmark"></i></div>
+                    <h3>Workforce Development Centers</h3>
+                    <p>
+                        Partnering with LA County WorkSource centers and local workforce boards
+                        to connect residents with job training, skills assessments, and direct
+                        employer referrals at no cost.
+                    </p>
+                </div>
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h3>Community Financial Institutions</h3>
+                    <p>
+                        We work with credit unions and community development financial institutions
+                        (CDFIs) to help residents establish banking relationships, build credit,
+                        and access affordable financial products.
+                    </p>
+                </div>
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-school"></i></div>
+                    <h3>Educational Institutions</h3>
+                    <p>
+                        From adult education programs and community colleges to vocational schools,
+                        we help residents navigate enrollment, financial aid applications, and
+                        childcare coordination so education fits their lives.
+                    </p>
+                </div>
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-building-user"></i></div>
+                    <h3>Employer Partners</h3>
+                    <p>
+                        We cultivate relationships with mission-aligned employers across Los Angeles
+                        who are committed to hiring and supporting individuals who are rebuilding
+                        their careers and their lives.
+                    </p>
+                </div>
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                    <h3>Childcare &amp; Family Services</h3>
+                    <p>
+                        Childcare is often the biggest barrier to employment and education for
+                        single mothers. We connect families with subsidized childcare, Head Start
+                        programs, and after-school resources across LA County.
+                    </p>
+                </div>
+
+                <div class="resources-connection-card">
+                    <div class="resources-connection-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h3>Legal Aid &amp; Advocacy</h3>
+                    <p>
+                        Legal challenges — from navigating divorce proceedings to resolving
+                        debt or immigration issues — can derail economic progress. We connect
+                        residents with pro bono legal services and advocacy organizations.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Impact Stats ── -->
+    <section class="econ-stats">
+        <div class="econ-stats-inner">
+            <h2>The Difference Stability Makes</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">of residents secure employment or enroll in education during their stay</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">move into permanent housing upon leaving Alexandria House</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">women and children supported each year</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">years of serving women and families in Los Angeles</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="econ-cta">
+        <div class="econ-cta-inner">
+            <h2>Help a Woman Write Her Next Chapter</h2>
+            <p>
+                Your support funds the workshops, coaching, and one-on-one guidance that transform
+                uncertainty into independence. Every contribution makes a real difference in the
+                lives of women and children rebuilding their futures.
+            </p>
+            <div class="involved-buttons">
+                <a href="#donate" class="involved-btn primary">Donate Today</a>
+                <a href="get_involved.html" class="involved-btn secondary">Volunteer or Partner</a>
+                <a href="index.html#services" class="involved-btn outline">Explore All Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <h3>Contact Us</h3>
+                <p>
+                    <a href="tel:12133812649">(213) 381-2649</a><br>
+                    <a href="mailto:info@alexandriahouse.org">info@alexandriahouse.org</a>
+                </p>
+                <p>
+                    426 S. Alexandria Avenue<br>
+                    Los Angeles, CA 90020
+                </p>
+                <p class="tax-id">Alexandria House Tax ID: 95-4809755</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/alexandriahouse" target="_blank" aria-label="Facebook">
+                        <img src="images/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/alexandriahouse" target="_blank" aria-label="Instagram" style="width:150px;">
+                        <img src="images/instagram.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <img src="images/transparency.png" alt="Alexandria House Transparency">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect (same as other pages)
+        window.addEventListener("scroll", () => {
+            const navbar = document.getElementById("navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+
+</body>
+</html>
