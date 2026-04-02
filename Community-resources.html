@@ -7,6 +7,277 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+
+        /* ── Shared orb animation ── */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.1); }
+        }
+
+        /* ── Hero ── */
+        .resources-hero {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
+            min-height: 80vh;
+        }
+
+        /* ── Intro Banner ── */
+        .resources-intro {
+            background: var(--forest-green);
+            padding: 56px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .resources-intro::before {
+            content: "";
+            position: absolute;
+            width: 400px; height: 400px;
+            background: var(--mint);
+            opacity: 0.12;
+            border-radius: 50%;
+            top: -150px; left: -100px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .resources-intro::after {
+            content: "";
+            position: absolute;
+            width: 300px; height: 300px;
+            background: var(--gold);
+            opacity: 0.08;
+            border-radius: 50%;
+            bottom: -100px; right: -80px;
+            animation: pulse 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+        .resources-intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .resources-intro-inner p {
+            font-size: 20px;
+            color: var(--cream);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ── Generic section wrapper ── */
+        .cr-section {
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cr-section h2 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: -1.5px;
+            position: relative;
+            z-index: 1;
+        }
+        .cr-section-sub {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-dark);
+            max-width: 700px;
+            margin: 0 auto 64px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── WELLNESS (light bg) ── */
+        .cr-wellness { background: var(--off-white); }
+        .cr-wellness h2 { color: var(--forest-green); }
+        .cr-wellness::before {
+            content: "";
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--mint);
+            opacity: 0.08;
+            border-radius: 50%;
+            top: 80px; left: -150px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .cr-wellness::after {
+            content: "";
+            position: absolute;
+            width: 400px; height: 400px;
+            background: var(--gold);
+            opacity: 0.06;
+            border-radius: 50%;
+            bottom: -100px; right: -100px;
+            animation: pulse 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* ── BASIC NEEDS (dark bg) ── */
+        .cr-basic { background: var(--forest-green); }
+        .cr-basic h2 { color: white; }
+        .cr-basic::before {
+            content: "";
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--sage);
+            opacity: 0.18;
+            border-radius: 50%;
+            top: -150px; left: -150px;
+            animation: pulse 6s ease-in-out infinite;
+        }
+        .cr-basic::after {
+            content: "";
+            position: absolute;
+            width: 400px; height: 400px;
+            background: var(--gold);
+            opacity: 0.1;
+            border-radius: 50%;
+            bottom: -100px; right: -100px;
+            animation: pulse 7s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* ── CONNECTIONS (light bg) ── */
+        .cr-connections { background: var(--off-white); }
+        .cr-connections h2 { color: var(--forest-green); }
+        .cr-connections::before {
+            content: "";
+            position: absolute;
+            width: 450px; height: 450px;
+            background: var(--sage);
+            opacity: 0.07;
+            border-radius: 50%;
+            bottom: -100px; left: -100px;
+            animation: pulse 5s ease-in-out infinite;
+        }
+        .cr-connections::after {
+            content: "";
+            position: absolute;
+            width: 350px; height: 350px;
+            background: var(--mint);
+            opacity: 0.07;
+            border-radius: 50%;
+            top: 60px; right: -80px;
+            animation: pulse 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        /* ── Card grid ── */
+        .cr-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 36px;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── PILLAR CARD ── */
+        .pillar-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+            transition: all 0.4s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 40px rgba(27, 67, 50, 0.18);
+        }
+
+        /* Placeholder zone — swap for <img> when ready */
+        .pillar-img-slot {
+            height: 200px;
+            background: var(--cream);
+        }
+
+        /* Dark-bg card overrides */
+        .cr-basic .pillar-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .cr-basic .pillar-card:hover {
+            background: rgba(255, 255, 255, 0.13);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+        }
+        .cr-basic .pillar-img-slot {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .pillar-body {
+            padding: 32px;
+        }
+        .pillar-body h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .cr-basic .pillar-body h3 { color: white; }
+        .pillar-body p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        .cr-basic .pillar-body p { color: var(--cream); }
+
+        /* ── CONNECTION CARD ── */
+        .conn-card {
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+            transition: all 0.4s ease;
+            border-left: 4px solid var(--mint);
+        }
+        .conn-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
+            border-left-color: var(--gold);
+        }
+        .conn-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(132, 169, 140, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--forest-green);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .conn-card:hover .conn-icon {
+            background: var(--forest-green);
+            color: var(--gold);
+        }
+        .conn-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+        .conn-card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .cr-section h2 { font-size: 36px; }
+            .cr-section { padding: 60px 24px; }
+            .resources-intro { padding: 48px 24px; }
+            .resources-intro-inner p { font-size: 17px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -57,13 +328,14 @@
     </section>
 
     <!-- Wellness Services -->
-    <section class="services resources-section" id="wellness">
+    <section class="cr-section cr-wellness" id="wellness">
         <h2>Wellness Services</h2>
-        <div class="service-grid">
+        <div class="cr-card-grid">
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-brain"></i> Mental Health Support</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Mental Health Support</h3>
                     <p>
                         On-site and referral-based mental health services including individual counseling,
                         trauma-informed therapy, and group support sessions to support emotional healing
@@ -72,9 +344,10 @@
                 </div>
             </div>
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-heart-pulse"></i> Health & Wellness</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Health &amp; Wellness</h3>
                     <p>
                         Connections to healthcare providers, reproductive health services, substance use
                         recovery support, and wellness programming that addresses the whole person.
@@ -82,9 +355,10 @@
                 </div>
             </div>
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-children"></i> Children's Programs</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Children's Programs</h3>
                     <p>
                         Age-appropriate enrichment, tutoring, developmental support, and structured
                         activities that help children thrive during times of transition.
@@ -96,13 +370,14 @@
     </section>
 
     <!-- Basic Needs -->
-    <section class="services resources-section resources-dark" id="basic-needs">
+    <section class="cr-section cr-basic" id="basic-needs">
         <h2>Basic Needs Assistance</h2>
-        <div class="service-grid">
+        <div class="cr-card-grid">
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-utensils"></i> Food Access</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Food Access</h3>
                     <p>
                         Nutritious meals, pantry support, and connections to food banks and community
                         meal programs ensuring families are nourished and stable.
@@ -110,9 +385,10 @@
                 </div>
             </div>
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-shirt"></i> Clothing & Household Items</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Clothing &amp; Household Items</h3>
                     <p>
                         Access to donated clothing, household essentials, hygiene products, school
                         supplies, and other daily necessities for women and their children.
@@ -120,9 +396,10 @@
                 </div>
             </div>
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-bus"></i> Transportation & Navigation</h3>
+            <div class="pillar-card">
+                <div class="pillar-img-slot"></div>
+                <div class="pillar-body">
+                    <h3>Transportation &amp; Navigation</h3>
                     <p>
                         Assistance navigating public transit, accessing transit passes, and coordinating
                         transportation to appointments, employment, schools, and services.
@@ -134,46 +411,46 @@
     </section>
 
     <!-- Community Connections -->
-    <section class="services resources-section" id="connections">
+    <section class="cr-section cr-connections" id="connections">
         <h2>Community Connections</h2>
-        <p class="resources-section-sub">
+        <p class="cr-section-sub">
             We actively partner with organizations across Los Angeles to connect participants
             to the broadest possible network of support.
         </p>
-        <div class="resources-connections-grid">
+        <div class="cr-card-grid">
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                 <h3>Legal Services</h3>
                 <p>Referrals to legal aid organizations for housing rights, immigration, family law, and protective orders.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-briefcase"></i></div>
                 <h3>Employment Support</h3>
                 <p>Job readiness training, résumé workshops, interview preparation, and connections to hiring partners.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h3>Education & Literacy</h3>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>Education &amp; Literacy</h3>
                 <p>GED preparation, ESL classes, financial literacy workshops, and connections to community college programs.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
                 <h3>Financial Assistance</h3>
                 <p>Guidance on benefits enrollment, emergency funds, banking access, and long-term financial planning.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-house-chimney-medical"></i></div>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-house-chimney-medical"></i></div>
                 <h3>Housing Navigation</h3>
                 <p>Support transitioning to permanent housing, including rental assistance referrals and tenant rights education.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
+            <div class="conn-card">
+                <div class="conn-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
                 <h3>Peer Support</h3>
                 <p>Community circles, peer mentorship, and alumni connections that build long-term relationships and accountability.</p>
             </div>
