@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Housing | Alexandria House</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles-crisis.css" />
+
+    <style>
+      /* Page-specific styles that complement the main stylesheet */
+
+      .background-shapes {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.05;
+        animation: pulse 6s ease-in-out infinite;
+      }
+
+      .shape1 {
+        width: 500px; height: 500px;
+        background: var(--forest-green);
+        top: -200px; right: -200px;
+      }
+
+      .shape2 {
+        width: 400px; height: 400px;
+        background: var(--sage);
+        bottom: 100px; left: -150px;
+        animation-delay: 2s;
+      }
+
+      .shape3 {
+        width: 300px; height: 300px;
+        background: var(--gold);
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: 4s;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 120px 40px 80px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Page header */
+      header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+
+      header h1 {
+        font-size: 64px;
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1.1;
+        color: var(--forest-green);
+        margin-bottom: 20px;
+      }
+
+      .subtitle {
+        font-size: 20px;
+        color: var(--sage);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Section spacing */
+      section {
+        margin-bottom: 60px;
+      }
+
+      section > header {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      section > header h2 {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--forest-green);
+        margin-bottom: 12px;
+      }
+
+      /* Resource cards grid */
+      .resources-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .resource-card {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resource-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 4px; height: 100%;
+        background: var(--gold);
+      }
+
+      .resource-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(27, 67, 50, 0.14);
+      }
+
+      .resource-card h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--forest-green);
+        margin-bottom: 16px;
+        letter-spacing: -0.5px;
+      }
+
+      .resource-card p {
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--text-dark);
+        margin-bottom: 16px;
+      }
+
+      .resource-card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .card-label {
+        display: inline-block;
+        background: var(--mint);
+        color: var(--forest-green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 50px;
+        margin-bottom: 16px;
+      }
+
+      /* ── Carousel ── */
+      .carousel-section { margin-bottom: 60px; }
+
+      .carousel-wrapper {
+        position: relative;
+        max-width: 820px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* ── Flip card shell ── */
+      .property-card {
+        min-width: 100%;
+        perspective: 1400px;
+        cursor: pointer;
+        height: 580px;
+      }
+
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 20px;
+      }
+
+      .property-card:hover .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(27, 67, 50, 0.12);
+      }
+
+      /* ── FRONT ── */
+      .card-front {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 96px;
+        color: white;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .card-front .front-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: rgba(255,255,255,0.8);
+      }
+      .card-front .front-hint {
+        font-size: 13px;
+        color: rgba(255,255,255,0.45);
+        font-style: italic;
+      }
+      .slide-1 .card-front { background: linear-gradient(160deg, #1b4332 0%, #52796f 100%); }
+      .slide-2 .card-front { background: linear-gradient(160deg, #2d5a4e 0%, #84a98c 100%); }
+      .slide-3 .card-front { background: linear-gradient(160deg, #1b4332 0%, #3a3a3a 100%); }
+
+      /* ── BACK ── */
+      .card-back {
+        transform: rotateY(180deg);
+        background: white;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+
+      /* SVG illustration header on back */
+      .property-image {
+        height: 200px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .property-image.slide-1-img { background: linear-gradient(160deg, #1b4332 0%, #52796f 100%); }
+      .property-image.slide-2-img { background: linear-gradient(160deg, #2d5a4e 0%, #84a98c 100%); }
+      .property-image.slide-3-img { background: linear-gradient(160deg, #1b4332 0%, #3a3a3a 100%); }
+
+      .property-image svg {
+        display: block;
+        width: 100%; height: 100%;
+        position: absolute;
+        bottom: 0; left: 0;
+      }
+
+      .property-content {
+        padding: 24px 32px 28px;
+        flex: 1;
+      }
+
+      .property-tag {
+        display: inline-block;
+        background: var(--cream);
+        color: var(--forest-green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 50px;
+        margin-bottom: 12px;
+      }
+
+      .property-content h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--forest-green);
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+      }
+
+      .property-content p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+
+      .property-details {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--sage);
+        font-weight: 500;
+      }
+
+      .detail-item i {
+        color: var(--gold);
+        width: 16px;
+        text-align: center;
+      }
+
+      /* Carousel controls */
+      .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .carousel-btn {
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--forest-green);
+        background: white;
+        color: var(--forest-green);
+        font-size: 16px;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: all 0.2s ease;
+      }
+      .carousel-btn:hover { background: var(--forest-green); color: white; }
+
+      .carousel-dots { display: flex; gap: 10px; }
+
+      .carousel-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: var(--cream);
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+        border: none;
+      }
+      .carousel-dot.active { background: var(--gold); transform: scale(1.3); }
+
+      .carousel-progress {
+        height: 3px;
+        background: var(--cream);
+        border-radius: 2px;
+        margin-top: 16px;
+        max-width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+      }
+      .carousel-progress-bar {
+        height: 100%;
+        background: var(--gold);
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.05s linear;
+      }
+
+      /* Continuum banner */
+      .continuum-banner {
+        background: var(--forest-green);
+        color: white;
+        border-radius: 20px;
+        padding: 56px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+
+      .continuum-banner::before {
+        content: '';
+        position: absolute;
+        width: 300px; height: 300px;
+        background: var(--gold);
+        opacity: 0.1;
+        border-radius: 50%;
+        top: -100px; right: -100px;
+        animation: pulse 5s ease-in-out infinite;
+      }
+
+      .continuum-banner::after {
+        content: '';
+        position: absolute;
+        width: 250px; height: 250px;
+        background: var(--mint);
+        opacity: 0.1;
+        border-radius: 50%;
+        bottom: -80px; left: -60px;
+        animation: pulse 6s ease-in-out infinite;
+        animation-delay: 1.5s;
+      }
+
+      .continuum-banner h2 {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 16px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .continuum-banner p {
+        font-size: 18px;
+        line-height: 1.7;
+        opacity: 0.9;
+        max-width: 750px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Journey steps */
+      .journey-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        flex-wrap: wrap;
+        margin-top: 36px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .journey-step {
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 12px;
+        padding: 14px 22px;
+        text-align: center;
+        min-width: 140px;
+      }
+
+      .journey-step .step-icon {
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+
+      .journey-step .step-label {
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      .journey-arrow {
+        color: var(--gold);
+        font-size: 22px;
+        margin: 0 8px;
+        opacity: 0.8;
+      }
+
+      /* Support services list */
+      .support-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 24px;
+      }
+
+      .support-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 15px;
+        color: var(--text-dark);
+        line-height: 1.5;
+      }
+
+      .support-list li i {
+        color: var(--gold);
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      /* Contact button */
+      .contact-info {
+        margin-top: 24px;
+      }
+
+      .contact-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--forest-green);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .contact-button:hover {
+        background: var(--sage);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(27, 67, 50, 0.3);
+      }
+
+      /* CTA section at bottom */
+      .page-cta {
+        text-align: center;
+        padding: 80px 40px;
+        background: var(--off-white);
+      }
+
+      .page-cta h2 {
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--forest-green);
+        margin-bottom: 16px;
+      }
+
+      .page-cta p {
+        font-size: 18px;
+        color: var(--sage);
+        margin-bottom: 36px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 768px) {
+        header h1 { font-size: 40px; }
+        .property-grid { padding: 0 20px; }
+        .continuum-banner { padding: 40px 28px; }
+        .continuum-banner h2 { font-size: 28px; }
+        .journey-steps { gap: 8px; }
+        .journey-arrow { display: none; }
+        .support-list { grid-template-columns: 1fr; }
+        .container { padding: 100px 20px 60px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background shapes -->
+    <div class="background-shapes">
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="shape shape3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <div class="logo">Alexandria House</div>
+        <ul class="nav-links">
+          <li><a href="#mission">Our Mission</a></li>
+          <li>
+            <div class="nav-dropdown">
+              <a href="#services">What We Do</a>
+              <div class="nav-dropdown-content">
+                <a href="safe-housing.html">Safe Housing</a>
+                <a href="#services">Case Management</a>
+                <a href="#services">Education</a>
+                <a href="#services">Community</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#involved">Get Involved</a></li>
+          <li><a href="#help">Crisis Help</a></li>
+        </ul>
+        <a href="#donate" class="donate-btn">Donate</a>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container">
+
+      <header>
+        <h1>Safe Housing</h1>
+        <p class="subtitle">
+          Providing a stable, supportive roof overhead is the foundation of
+          everything we do — the first step in helping women and children
+          rebuild their lives with dignity.
+        </p>
+      </header>
+
+      <!-- Continuum Banner -->
+      <div class="continuum-banner">
+        <h2>A Continuum of Care</h2>
+        <p>
+          Alexandria House walks alongside women and children at every stage —
+          from crisis, through transitional stability, and onward to permanent
+          housing and lasting independence.
+        </p>
+        <div class="journey-steps">
+          <div class="journey-step">
+            <div class="step-icon">🆘</div>
+            <div class="step-label">Crisis</div>
+          </div>
+          <div class="journey-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="journey-step">
+            <div class="step-icon">🏠</div>
+            <div class="step-label">Transitional Housing</div>
+          </div>
+          <div class="journey-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="journey-step">
+            <div class="step-icon">💪</div>
+            <div class="step-label">Stability &amp; Growth</div>
+          </div>
+          <div class="journey-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="journey-step">
+            <div class="step-icon">🔑</div>
+            <div class="step-label">Permanent Housing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intro -->
+      <section id="about" class="resources-grid">
+        <div class="resource-card">
+          <span class="card-label">Our Approach</span>
+          <h2>Safety is Where Healing Begins</h2>
+          <p>
+            For women and children fleeing domestic violence, homelessness, or trauma,
+            finding a safe place to sleep is not a given — it is a life-changing gift.
+            Alexandria House provides that foundation, offering safe and supportive
+            housing where residents can begin to heal, plan, and grow.
+          </p>
+          <p>
+            We are intentionally multicultural and anti-racist, committed to
+            addressing the systemic injustices that keep women and families
+            disenfranchised and living in poverty. Our housing programs are not
+            just shelter — they are environments of empowerment, where every
+            resident is treated with respect and given the resources to determine
+            her own future.
+          </p>
+        </div>
+      </section>
+
+      <!-- The Properties — Carousel -->
+      <section id="properties" class="carousel-section">
+        <header>
+          <h2>Our Housing Properties</h2>
+          <p class="subtitle">
+            Three properties allow us to serve residents at every point along
+            their journey toward stability.
+          </p>
+        </header>
+
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+
+            <!-- Slide 1: Alexandria House -->
+            <div class="property-card slide-1">
+              <div class="card-inner">
+
+                <!-- FRONT -->
+                <div class="card-front">
+                  <span style="font-size:80px;">🏠</span>
+                  <span class="front-label">Alexandria House</span>
+                  <span class="front-hint">Hover to learn more</span>
+                </div>
+
+                <!-- BACK -->
+                <div class="card-back">
+                  <div class="property-image slide-1-img">
+                    <svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0" y="185" width="800" height="15" fill="rgba(0,0,0,0.2)"/>
+                      <!-- plain yellow house silhouette, centered -->
+                      <g transform="translate(290,5)">
+                        <polygon points="110,35 220,115 0,115" fill="#d4a574"/>
+                        <rect x="20" y="115" width="180" height="70" fill="#d4a574"/>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="property-content">
+                    <span class="property-tag">Transitional Housing</span>
+                    <h3>Alexandria House</h3>
+                    <p>Our original property serves as transitional housing for women and children escaping domestic violence and homelessness. Residents live in a structured, supportive community while working with case managers to stabilize their lives.</p>
+                    <p>The house offers a safe environment free from fear, where mothers can focus on their children's wellbeing and take meaningful steps toward financial and emotional independence.</p>
+                    <div class="property-details">
+                      <div class="detail-item"><i class="fa-solid fa-users"></i> Women and children fleeing domestic violence &amp; homelessness</div>
+                      <div class="detail-item"><i class="fa-solid fa-route"></i> Transitional housing on the path to permanent stability</div>
+                      <div class="detail-item"><i class="fa-solid fa-location-dot"></i> Koreatown, Los Angeles</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Slide 2: Expansion House -->
+            <div class="property-card slide-2">
+              <div class="card-inner">
+
+                <!-- FRONT -->
+                <div class="card-front">
+                  <span style="font-size:80px;">🏡</span>
+                  <span class="front-label">Expansion House</span>
+                  <span class="front-hint">Hover to learn more</span>
+                </div>
+
+                <!-- BACK -->
+                <div class="card-back">
+                  <div class="property-image slide-2-img">
+                    <svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0" y="185" width="800" height="15" fill="rgba(0,0,0,0.2)"/>
+                      <!-- muted plain yellow house (left) — no details -->
+                      <g transform="translate(165,15)">
+                        <polygon points="95,40 190,115 0,115" fill="#c9a96e" opacity="0.65"/>
+                        <rect x="16" y="115" width="158" height="60" fill="#c9a96e" opacity="0.65"/>
+                      </g>
+                      <!-- detailed green house (right) -->
+                      <g transform="translate(415,18)">
+                        <polygon points="100,38 200,112 0,112" fill="#52796f"/>
+                        <rect x="143" y="52" width="18" height="36" fill="#3d5c53"/>
+                        <rect x="18" y="112" width="164" height="63" fill="#52796f"/>
+                        <rect x="78" y="142" width="36" height="33" fill="#3d5c53" rx="3"/>
+                        <rect x="28" y="122" width="30" height="22" fill="#fff" rx="2" opacity="0.6"/>
+                        <rect x="138" y="122" width="30" height="22" fill="#fff" rx="2" opacity="0.6"/>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="property-content">
+                    <span class="property-tag">Transitional Housing</span>
+                    <h3>Expansion House</h3>
+                    <p>Our Expansion House extends our capacity to welcome more women and children in crisis. It provides transitional housing for those fleeing domestic violence and homelessness, with the same trauma-informed, supportive community environment.</p>
+                    <p>Additional space means more families can access the safe haven and comprehensive case support they need at their most vulnerable moment.</p>
+                    <div class="property-details">
+                      <div class="detail-item"><i class="fa-solid fa-users"></i> Women and children in crisis situations</div>
+                      <div class="detail-item"><i class="fa-solid fa-route"></i> Transitional housing with trauma-informed support</div>
+                      <div class="detail-item"><i class="fa-solid fa-location-dot"></i> Los Angeles</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Slide 3: Kenmore Residence -->
+            <div class="property-card slide-3">
+              <div class="card-inner">
+
+                <!-- FRONT -->
+                <div class="card-front">
+                  <span style="font-size:80px;">🏢</span>
+                  <span class="front-label">The Kenmore Residence</span>
+                  <span class="front-hint">Hover to learn more</span>
+                </div>
+
+                <!-- BACK -->
+                <div class="card-back">
+                  <div class="property-image slide-3-img">
+                    <svg viewBox="0 0 800 200" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="0" y="185" width="800" height="15" fill="rgba(0,0,0,0.2)"/>
+
+                      <!-- muted plain yellow house (far left) -->
+                      <g transform="translate(60,40)">
+                        <polygon points="75,32 150,95 0,95" fill="#c9a96e" opacity="0.45"/>
+                        <rect x="12" y="95" width="126" height="50" fill="#c9a96e" opacity="0.45"/>
+                      </g>
+
+                      <!-- muted plain green house (mid-left) -->
+                      <g transform="translate(200,48)">
+                        <polygon points="70,30 140,90 0,90" fill="#84a98c" opacity="0.45"/>
+                        <rect x="11" y="90" width="118" height="47" fill="#84a98c" opacity="0.45"/>
+                      </g>
+
+                      <!-- gray apartment building (center-right) -->
+                      <g transform="translate(360,10)">
+                        <rect x="0" y="28" width="280" height="150" fill="#9ca3af"/>
+                        <rect x="0" y="18" width="280" height="12" fill="#6b7280"/>
+                        <rect x="25" y="8" width="230" height="12" fill="#6b7280"/>
+                        <!-- floor lines -->
+                        <rect x="0" y="78" width="280" height="3" fill="#6b7280" opacity="0.55"/>
+                        <rect x="0" y="126" width="280" height="3" fill="#6b7280" opacity="0.55"/>
+                        <!-- row 1 windows -->
+                        <rect x="14" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="58" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="102" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="146" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="190" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="234" y="37" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <!-- row 2 windows -->
+                        <rect x="14" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="58" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="102" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="146" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="190" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="234" y="86" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <!-- row 3 windows -->
+                        <rect x="14" y="134" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="58" y="134" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="190" y="134" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <rect x="234" y="134" width="32" height="28" fill="#fff" rx="2" opacity="0.65"/>
+                        <!-- entrance -->
+                        <rect x="108" y="134" width="50" height="44" fill="#6b7280" rx="3"/>
+                        <rect x="114" y="140" width="17" height="32" fill="#4b5563" rx="2"/>
+                        <rect x="135" y="140" width="17" height="32" fill="#4b5563" rx="2"/>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="property-content">
+                    <span class="property-tag">Permanent Affordable Housing</span>
+                    <h3>The Kenmore Residence</h3>
+                    <p>The Kenmore Residence is our apartment building offering affordable low-income housing — the permanent destination at the far end of our continuum of care. For residents who have completed transitional programs, Kenmore provides a stable, dignified home they can truly call their own.</p>
+                    <p>By maintaining affordable housing units, Alexandria House helps break the cycle of housing instability and ensures financial hardship does not force families back into homelessness.</p>
+                    <div class="property-details">
+                      <div class="detail-item"><i class="fa-solid fa-users"></i> Low-income individuals and families</div>
+                      <div class="detail-item"><i class="fa-solid fa-key"></i> Permanent affordable housing</div>
+                      <div class="detail-item"><i class="fa-solid fa-location-dot"></i> Los Angeles</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div><!-- /carousel-track -->
+        </div><!-- /carousel-wrapper -->
+
+        <!-- Progress bar -->
+        <div class="carousel-progress">
+          <div class="carousel-progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+          </div>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Supportive Services -->
+      <section id="support" class="resources-grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="resource-card">
+          <span class="card-label">Wraparound Support</span>
+          <h2>More Than Four Walls</h2>
+          <p>
+            Safe housing at Alexandria House is never just a roof — it comes
+            with a full network of supportive services designed to help each
+            resident move toward lasting stability. All residents in our
+            transitional housing programs have access to:
+          </p>
+          <ul class="support-list">
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Individual case management and goal-setting
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Trauma-informed, culturally responsive support
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Children's programs and family support
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Life skills and financial literacy workshops
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Employment readiness and education support
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Community wellness and enrichment opportunities
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Connections to permanent housing resources
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              Basic needs resources for our broader neighborhood
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Who We Serve -->
+      <section id="eligibility" class="resources-grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="resource-card">
+          <span class="card-label">Who We Serve</span>
+          <h2>Seeking Housing Support?</h2>
+          <p>
+            Our transitional housing programs serve women and children who are
+            experiencing homelessness or fleeing domestic violence and trauma.
+            We welcome residents of all backgrounds and are committed to
+            providing an anti-racist, multicultural environment where everyone
+            is treated with dignity.
+          </p>
+          <p>
+            If you or someone you know is in need of safe housing or crisis support,
+            please reach out to us. Our team will work with you to understand
+            your situation and connect you with the right resources.
+          </p>
+          <div class="contact-info">
+            <a href="tel:2133812649" class="contact-button">
+              <i class="fa-solid fa-phone"></i>
+              Call Us: (213) 381-2649
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom CTA -->
+    <div class="page-cta">
+      <h2>Help Us Keep the Doors Open</h2>
+      <p>
+        Your support allows us to maintain safe, welcoming spaces for women
+        and children who have nowhere else to turn.
+      </p>
+      <div class="cta-row">
+        <a href="#donate" class="involved-btn primary">Donate Now</a>
+        <a href="#involved" class="involved-btn secondary">Volunteer</a>
+        <a href="#contact" class="involved-btn outline">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <h3>Alexandria House</h3>
+          <p>
+            A transitional home for women and children moving from emergency
+            shelter to permanent housing.
+          </p>
+          <p>
+            <a href="tel:2133812649">(213) 381-2649</a>
+          </p>
+          <p>
+            436 S. Alexandria Ave, Los Angeles, CA 90020
+          </p>
+          <p class="tax-id">Tax ID: 95-3759299 &nbsp;|&nbsp; 501(c)(3) Nonprofit Organization</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook" style="font-size:24px; color:white;"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" style="font-size:24px; color:white;"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter" style="font-size:24px; color:white;"></i></a>
+          </div>
+        </div>
+        <div class="footer-right">
+          <p style="font-size:14px; opacity:0.7; line-height:1.6;">
+            Alexandria House is committed to providing safe, supportive,
+            and dignified housing for women and children experiencing
+            homelessness and trauma in Los Angeles.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ── Navbar scroll ──
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // ── Carousel ──
+      const track       = document.getElementById('carouselTrack');
+      const dots        = document.querySelectorAll('.carousel-dot');
+      const prevBtn     = document.getElementById('prevBtn');
+      const nextBtn     = document.getElementById('nextBtn');
+      const progressBar = document.getElementById('progressBar');
+      const wrapper     = track.closest('.carousel-wrapper');
+
+      const TOTAL       = 3;
+      const INTERVAL_MS = 3000;
+
+      let current    = 0;
+      let autoTimer  = null;
+      let resumeTimer = null;
+
+      function goTo(index) {
+        current = (index + TOTAL) % TOTAL;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      function resetProgress() {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          progressBar.style.transition = `width ${INTERVAL_MS}ms linear`;
+          progressBar.style.width = '100%';
+        }));
+      }
+
+      function startAuto() {
+        clearInterval(autoTimer);
+        resetProgress();
+        autoTimer = setInterval(() => {
+          goTo(current + 1);
+          resetProgress();
+        }, INTERVAL_MS);
+      }
+
+      function pause() {
+        clearInterval(autoTimer);
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+      }
+
+      function manualNav(dir) {
+        pause();
+        goTo(current + dir);
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(startAuto, 6000);
+      }
+
+      prevBtn.addEventListener('click', () => manualNav(-1));
+      nextBtn.addEventListener('click', () => manualNav(1));
+
+      dots.forEach(d => {
+        d.addEventListener('click', () => {
+          pause();
+          goTo(+d.dataset.index);
+          clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(startAuto, 6000);
+        });
+      });
+
+      // Pause auto-rotate while hovering the carousel wrapper
+      // (the flip itself is pure CSS on .property-card:hover)
+      wrapper.addEventListener('mouseenter', pause);
+      wrapper.addEventListener('mouseleave', startAuto);
+
+      // Kick off
+      startAuto();
+    </script>
+  </body>
+</html>
