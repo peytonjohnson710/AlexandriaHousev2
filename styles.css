@@ -500,13 +500,14 @@ nav.scrolled {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
+    outline: 2px solid var(--gold);
 }
 
 .service-image {
@@ -1135,20 +1136,22 @@ nav.scrolled {
     position: relative;
     z-index: 1;
 }
- 
+
+/* ── Connection card base + hover highlight ─────────────────── */
 .resources-connection-card {
     background: white;
     border-radius: 16px;
     padding: 36px 32px;
     box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     border-left: 4px solid var(--mint);
 }
- 
+
 .resources-connection-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
     border-left-color: var(--gold);
+    outline: 2px solid var(--gold);
 }
  
 .resources-connection-icon {

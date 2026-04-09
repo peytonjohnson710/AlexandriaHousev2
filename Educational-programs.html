@@ -9,9 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
-        /* Small enhancements only — all base styles come from styles.css */
+        /* ── Section wave dividers ─────────────────────────────── */
+        .wave-divider {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            margin: 0;
+        }
+        .wave-divider svg {
+            display: block;
+            width: 100%;
+            height: 80px;
+        }
 
-        /* Sticky section jump-nav */
+        /* ── Sticky section jump-nav ────────────────────────────── */
         .page-subnav {
             position: sticky;
             top: 70px;
@@ -42,11 +54,11 @@
             transition: color 0.2s, border-color 0.2s;
         }
         .page-subnav-inner a:hover {
-            color: var(--primary, #c4621a);
-            border-bottom-color: var(--primary, #c4621a);
+            color: var(--gold);
+            border-bottom-color: var(--gold);
         }
 
-        /* SUSLA card: visually distinguished as a link */
+        /* ── SUSLA card: visually distinguished as a link ───────── */
         a.service-card {
             text-decoration: none;
             display: block;
@@ -55,7 +67,7 @@
             transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         a.service-card:hover {
-            border-color: var(--primary, #c4621a);
+            border-color: var(--gold);
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.10);
         }
@@ -68,10 +80,10 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: var(--primary, #c4621a);
+            color: var(--gold);
         }
 
-        /* Instagram pill link */
+        /* ── Instagram pill link ────────────────────────────────── */
         .ig-pill {
             display: inline-flex;
             align-items: center;
@@ -87,19 +99,14 @@
         }
         .ig-pill:hover { opacity: 0.75; }
 
-        /* Section intro text for dark sections */
+        /* ── Section intro text ─────────────────────────────────── */
         .resources-section-sub {
             max-width: 680px;
             margin: -0.5rem auto 2.5rem;
             text-align: center;
         }
 
-        /* Decorative top accent on connection cards in dark section */
-        .resources-dark .resources-connection-card {
-            border-top: 3px solid rgba(255,255,255,0.12);
-        }
-
-        /* Small hover lift on all service cards */
+        /* ── Small hover lift on service cards ──────────────────── */
         .service-card {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
@@ -107,6 +114,85 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.09);
         }
+
+        /* ── SUSLA image hero strip ─────────────────────────────── */
+        .susla-image-strip {
+            width: 100%;
+            max-height: 420px;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 0 auto 56px;
+            position: relative;
+            box-shadow: 0 12px 48px rgba(27,67,50,0.18);
+        }
+        .susla-image-strip img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+        .susla-image-strip-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(27,67,50,0.55) 0%, transparent 55%);
+            display: flex;
+            align-items: flex-end;
+            padding: 32px 40px;
+        }
+        .susla-image-strip-overlay p {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            margin: 0;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        /* ── SUSLA CTA buttons ──────────────────────────────────── */
+        .susla-cta-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0 auto 64px;
+        }
+        .susla-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .susla-btn.filled {
+            background: var(--gold);
+            color: #fff;
+        }
+        .susla-btn.filled:hover {
+            background: #c69563;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212,165,116,0.4);
+        }
+        .susla-btn.outline {
+            background: transparent;
+            color: var(--forest-green);
+            border: 2px solid var(--forest-green);
+        }
+        .susla-btn.outline:hover {
+            background: var(--forest-green);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(27,67,50,0.2);
+        }
+
+        /* ── Section spacing fixes to mesh with waves ───────────── */
+        .section-no-top-pad { padding-top: 0 !important; }
+        .section-no-bot-pad  { padding-bottom: 0 !important; }
     </style>
 </head>
 <body>
@@ -146,6 +232,7 @@
         </div>
     </section>
 
+    <!-- Wave: hero (forest green) → intro banner (forest green) — seamless -->
     <!-- Intro Banner -->
     <section class="resources-intro">
         <div class="resources-intro-inner">
@@ -159,6 +246,13 @@
         </div>
     </section>
 
+    <!-- Wave: forest-green intro → off-white adult education -->
+    <div class="wave-divider" style="background: var(--forest-green);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C360,80 1080,0 1440,60 L1440,80 L0,80 Z" fill="#f8f9fa"/>
+        </svg>
+    </div>
+
     <!-- Sticky section jump-nav -->
     <nav class="page-subnav" aria-label="Page sections">
         <div class="page-subnav-inner">
@@ -169,11 +263,10 @@
     </nav>
 
     <!-- Adult Education -->
-    <section class="services resources-section" id="adult-education">
-        <h2>Adult Education &amp; Economic Empowerment</h2>
+    <section class="services resources-section section-no-top-pad" id="adult-education" style="background: var(--off-white);">
+        <h2 style="padding-top: 80px;">Adult Education &amp; Economic Empowerment</h2>
         <div class="service-grid">
 
-            <!-- SUSLA — links down to spotlight -->
             <a href="#susla-spotlight" class="service-card">
                 <div class="service-content">
                     <h3><i class="fa-solid fa-store"></i> Start-Up Sisterhood LA (SUSLA)</h3>
@@ -213,9 +306,16 @@
         </div>
     </section>
 
+    <!-- Wave: off-white → white (youth programs) -->
+    <div class="wave-divider" style="background: var(--off-white);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,60 C480,0 960,80 1440,20 L1440,80 L0,80 Z" fill="#ffffff"/>
+        </svg>
+    </div>
+
     <!-- Youth Programs -->
-    <section class="services resources-section resources-dark" id="youth-programs">
-        <h2>Youth Educational Programs</h2>
+    <section class="services resources-section resources-dark section-no-top-pad" id="youth-programs" style="background: white;">
+        <h2 style="padding-top: 60px;">Youth Educational Programs</h2>
         <p class="resources-section-sub">
             When mothers pursue work or education, their children need a safe, nurturing place
             to grow. Alexandria House provides a full continuum of care — from infant programs
@@ -255,76 +355,112 @@
                     </p>
                 </div>
             </div>
-
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-children"></i> Childcare for Families in Programs</h3>
-                    <p>
-                        High-quality childcare is available to parents while they work, attend
-                        school, or participate in Alexandria House programs — removing a critical
-                        barrier to self-sufficiency.
-                    </p>
-                </div>
-            </div>
+            </div>d
 
         </div>
     </section>
 
+    <!-- Wave: white → forest-green (SUSLA) -->
+    <div class="wave-divider" style="background: white;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,20 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="var(--forest-green)"/>
+        </svg>
+    </div>
+
     <!-- SUSLA Spotlight -->
-    <section class="services resources-section" id="susla-spotlight">
-        <h2>Spotlight: Start-Up Sisterhood LA</h2>
-        <p class="resources-section-sub">
+    <section class="services resources-section section-no-top-pad" id="susla-spotlight"
+             style="background: var(--forest-green);">
+
+        <!-- Section heading in reversed color -->
+        <h2 style="color: var(--cream); padding-top: 60px;">Spotlight: Start-Up Sisterhood LA</h2>
+
+        <p class="resources-section-sub" style="color: var(--cream); opacity: 0.9;">
             SUSLA was born from listening. During COVID-19, many women in our community lost their
             livelihoods in the service industry. In response, Alexandria House developed this
             13-week entrepreneurship program — and today, SUSLA graduates run businesses across
             Los Angeles. Follow along:
-            <a href="https://www.instagram.com/startupsisterhoodla/" target="_blank" class="ig-pill" style="color: #c4621a;">
+            <a href="https://www.instagram.com/startupsisterhoodla/" target="_blank"
+               class="ig-pill" style="color: var(--gold);">
                 <i class="fa-brands fa-instagram"></i> @startupsisterhoodla
             </a>
         </p>
-        <div class="resources-connections-grid">
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                <h3>Business Planning</h3>
-                <p>Participants build a complete business plan from concept to launch, guided step-by-step by instructors and mentors.</p>
+        <!-- CTA Buttons -->
+        <div class="susla-cta-row">
+            <a href="#" class="susla-btn filled">
+                <i class="fa-solid fa-star"></i> Meet the Entrepreneurs
+            </a>
+            <a href="#" class="susla-btn outline" style="color: var(--cream); border-color: var(--cream);">
+                <i class="fa-solid fa-people-group"></i> Meet the Team
+            </a>
+        </div>
+
+        <!-- Photo strip -->
+        <div class="susla-image-strip" style="max-width: 1100px;">
+            <img src="images/startupSisterhood LA2.jpg" alt="Start-Up Sisterhood LA cohort" />
+            <div class="susla-image-strip-overlay">
+                <p>Women from across Los Angeles building their futures through SUSLA.</p>
+            </div>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="resources-connections-grid" style="max-width: 1100px; margin: 0 auto;">
+
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                <h3 style="color: var(--cream);">Business Planning</h3>
+                <p style="color: rgba(202,210,197,0.85);">Participants build a complete business plan from concept to launch, guided step-by-step by instructors and mentors.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-landmark"></i></div>
-                <h3>Banking &amp; Credit</h3>
-                <p>Workshops on opening business accounts, building credit, and establishing the financial foundation every small business needs.</p>
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-landmark"></i>
+                </div>
+                <h3 style="color: var(--cream);">Banking &amp; Credit</h3>
+                <p style="color: rgba(202,210,197,0.85);">Workshops on opening business accounts, building credit, and establishing the financial foundation every small business needs.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-globe"></i></div>
-                <h3>Website &amp; Marketing</h3>
-                <p>Training in building a web presence and developing marketing strategies to reach customers and grow a brand.</p>
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <h3 style="color: var(--cream);">Website &amp; Marketing</h3>
+                <p style="color: rgba(202,210,197,0.85);">Training in building a web presence and developing marketing strategies to reach customers and grow a brand.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-user-tie"></i></div>
-                <h3>1-on-1 Mentorship</h3>
-                <p>Each participant is paired with a mentor providing personalized support in bookkeeping, accounting, design, and more.</p>
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3 style="color: var(--cream);">1-on-1 Mentorship</h3>
+                <p style="color: rgba(202,210,197,0.85);">Each participant is paired with a mentor providing personalized support in bookkeeping, accounting, design, and more.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-id-card"></i></div>
-                <h3>Licensing &amp; Legal Basics</h3>
-                <p>Step-by-step guidance on registering a business, obtaining licenses, and meeting California requirements.</p>
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <h3 style="color: var(--cream);">Licensing &amp; Legal Basics</h3>
+                <p style="color: rgba(202,210,197,0.85);">Step-by-step guidance on registering a business, obtaining licenses, and meeting California requirements.</p>
             </div>
 
-            <div class="resources-connection-card">
-                <div class="resources-connection-icon"><i class="fa-solid fa-utensils"></i></div>
-                <h3>SUSLA Graduate Catering</h3>
-                <p>Many graduates operate their own catering businesses. Support their work through our Top Chef catering vendor directory — contact us to learn more.</p>
+            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
+                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <h3 style="color: var(--cream);">SUSLA Graduate Catering</h3>
+                <p style="color: rgba(202,210,197,0.85);">Many graduates operate their own catering businesses. Support their work through our Top Chef catering vendor directory — contact us to learn more.</p>
             </div>
 
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="resources-intro">
+    <!-- Wave: forest-green SUSLA → forest-green CTA (seamless) -->
+
+    <!-- CTA Banner -->
+    <section class="resources-intro" style="background: var(--sage);">
         <div class="resources-intro-inner">
             <p>
                 Want to support our educational programs as a tutor, workshop facilitator, or
@@ -333,6 +469,13 @@
             </p>
         </div>
     </section>
+
+    <!-- Wave: sage CTA → footer dark green -->
+    <div class="wave-divider" style="background: var(--sage);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#0f2f24"/>
+        </svg>
+    </div>
 
     <footer class="site-footer">
         <div class="footer-inner">
@@ -376,7 +519,7 @@
                 if (e.isIntersecting) {
                     subLinks.forEach(l => { l.style.color = ''; l.style.borderBottomColor = 'transparent'; });
                     const match = document.querySelector(`.page-subnav a[href="#${e.target.id}"]`);
-                    if (match) { match.style.color = '#c4621a'; match.style.borderBottomColor = '#c4621a'; }
+                    if (match) { match.style.color = 'var(--gold)'; match.style.borderBottomColor = 'var(--gold)'; }
                 }
             });
         }, { rootMargin: '-35% 0px -60% 0px' });
