@@ -826,7 +826,7 @@ nav.scrolled {
 }
 
 .involved-btn.primary {
-    background: var(--gold);
+    background: var(--forest-green);
     color: white;
 }
 
@@ -835,15 +835,6 @@ nav.scrolled {
     box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
 }
 
-.involved-btn.secondary {
-    background: var(--forest-green);
-    color: white;
-}
-
-.involved-btn.secondary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(27, 67, 50, 0.4);
-}
 
 .involved-btn.outline {
     background: transparent;
