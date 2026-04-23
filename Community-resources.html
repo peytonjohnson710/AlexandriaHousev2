@@ -9,61 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
 
-        /* ── Shared orb animation ── */
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50%       { transform: scale(1.1); }
         }
 
-        /* ── Hero ── */
         .resources-hero {
             background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
             min-height: 80vh;
         }
 
-        /* ── Intro Banner ── */
-        .resources-intro {
-            background: var(--forest-green);
-            padding: 56px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        .resources-intro::before {
-            content: "";
-            position: absolute;
-            width: 400px; height: 400px;
-            background: var(--mint);
-            opacity: 0.12;
-            border-radius: 50%;
-            top: -150px; left: -100px;
-            animation: pulse 6s ease-in-out infinite;
-        }
-        .resources-intro::after {
-            content: "";
-            position: absolute;
-            width: 300px; height: 300px;
-            background: var(--gold);
-            opacity: 0.08;
-            border-radius: 50%;
-            bottom: -100px; right: -80px;
-            animation: pulse 7s ease-in-out infinite;
-            animation-delay: 2s;
-        }
-        .resources-intro-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .resources-intro-inner p {
-            font-size: 20px;
-            color: var(--cream);
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        /* ── Generic section wrapper ── */
         .cr-section {
             padding: 100px 40px;
             position: relative;
@@ -139,10 +94,10 @@
             animation-delay: 2s;
         }
 
-        /* ── CONNECTIONS (light bg) ── */
-        .cr-connections { background: var(--off-white); }
-        .cr-connections h2 { color: var(--forest-green); }
-        .cr-connections::before {
+        /* ── FOOD & ESSENTIALS (light bg) ── */
+        .cr-food { background: var(--off-white); }
+        .cr-food h2 { color: var(--forest-green); }
+        .cr-food::before {
             content: "";
             position: absolute;
             width: 450px; height: 450px;
@@ -152,7 +107,7 @@
             bottom: -100px; left: -100px;
             animation: pulse 5s ease-in-out infinite;
         }
-        .cr-connections::after {
+        .cr-food::after {
             content: "";
             position: absolute;
             width: 350px; height: 350px;
@@ -188,7 +143,6 @@
             box-shadow: 0 14px 40px rgba(27, 67, 50, 0.18);
         }
 
-        /* Placeholder zone — swap for <img> when ready */
         .pillar-img-slot {
             height: 200px;
             background: var(--cream);
@@ -226,56 +180,9 @@
         }
         .cr-basic .pillar-body p { color: var(--cream); }
 
-        /* ── CONNECTION CARD ── */
-        .conn-card {
-            background: white;
-            border-radius: 16px;
-            padding: 36px 32px;
-            box-shadow: 0 4px 20px rgba(27, 67, 50, 0.08);
-            transition: all 0.4s ease;
-            border-left: 4px solid var(--mint);
-        }
-        .conn-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(27, 67, 50, 0.15);
-            border-left-color: var(--gold);
-        }
-        .conn-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(132, 169, 140, 0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--forest-green);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-        .conn-card:hover .conn-icon {
-            background: var(--forest-green);
-            color: var(--gold);
-        }
-        .conn-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--forest-green);
-            margin-bottom: 12px;
-        }
-        .conn-card p {
-            font-size: 15px;
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ── Responsive ── */
         @media (max-width: 768px) {
             .cr-section h2 { font-size: 36px; }
             .cr-section { padding: 60px 24px; }
-            .resources-intro { padding: 48px 24px; }
-            .resources-intro-inner p { font-size: 17px; }
         }
     </style>
 </head>
@@ -312,17 +219,6 @@
             <p>
                 Wellness services, basic needs assistance, and connection to community resources
                 that support healing, growth, and long-term success for women and children.
-            </p>
-        </div>
-    </section>
-
-    <!-- Intro Banner -->
-    <section class="resources-intro">
-        <div class="resources-intro-inner">
-            <p>
-                Alexandria House connects residents and program participants to a wide range of services —
-                from mental health support and wellness programs to food access, clothing, and referrals
-                to partner organizations throughout Los Angeles.
             </p>
         </div>
     </section>
@@ -410,49 +306,40 @@
         </div>
     </section>
 
-    <!-- Community Connections -->
-    <section class="cr-section cr-connections" id="connections">
-        <h2>Community Connections</h2>
+    <!-- Food & Essential Resources -->
+    <section class="cr-section cr-food" id="food-essentials">
+        <h2>Food &amp; Essential Resources</h2>
         <p class="cr-section-sub">
-            We actively partner with organizations across Los Angeles to connect participants
-            to the broadest possible network of support.
+            In collaboration with local partners, we provide daily access to nutritious food and household necessities for our neighbors.
         </p>
+        
         <div class="cr-card-grid">
 
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                <h3>Legal Services</h3>
-                <p>Referrals to legal aid organizations for housing rights, immigration, family law, and protective orders.</p>
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-refrigerator"></i></div>
+                <h3>Community Fridges</h3>
+                <p>
+                    Food security is supported through our collaboration with <strong>LA Community Fridges</strong>, 
+                    maintaining a solar-powered fridge and pantry on campus, accessible 24/7.
+                </p>
             </div>
 
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-briefcase"></i></div>
-                <h3>Employment Support</h3>
-                <p>Job readiness training, résumé workshops, interview preparation, and connections to hiring partners.</p>
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-box-open"></i></div>
+                <h3>Food Distribution</h3>
+                <p>
+                    In partnership with local food banks, we provide distribution <strong>six days a week</strong>, 
+                    accessible to all neighbors — housed and unhoused alike.
+                </p>
             </div>
 
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h3>Education &amp; Literacy</h3>
-                <p>GED preparation, ESL classes, financial literacy workshops, and connections to community college programs.</p>
-            </div>
-
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                <h3>Financial Assistance</h3>
-                <p>Guidance on benefits enrollment, emergency funds, banking access, and long-term financial planning.</p>
-            </div>
-
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-house-chimney-medical"></i></div>
-                <h3>Housing Navigation</h3>
-                <p>Support transitioning to permanent housing, including rental assistance referrals and tenant rights education.</p>
-            </div>
-
-            <div class="conn-card">
-                <div class="conn-icon"><i class="fa-solid fa-hands-holding-circle"></i></div>
-                <h3>Peer Support</h3>
-                <p>Community circles, peer mentorship, and alumni connections that build long-term relationships and accountability.</p>
+            <div class="resources-connection-card">
+                <div class="resources-connection-icon"><i class="fa-solid fa-baby-carriage"></i></div>
+                <h3>Essential Products</h3>
+                <p>
+                    We provide accessible hygiene products, diapers, and baby essentials to families 
+                    with limited resources in our underserved neighborhood.
+                </p>
             </div>
 
         </div>
