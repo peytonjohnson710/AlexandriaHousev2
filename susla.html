@@ -1,1 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startup Sisterhood LA | Alexandria House</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --forest-green: #1b4332;
+      --sage: #84a98c;
+      --mint: #b7d6c3;
+      --gold: #d4b15a;
+      --cream: #f8f4ea;
+      --off-white: #f7f7f2;
+      --text-dark: #25332b;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text-dark);
+      background: var(--off-white);
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .ssla-hero {
+      position: relative;
+      min-height: 86vh;
+      background:
+        linear-gradient(120deg, rgba(27, 67, 50, 0.88), rgba(27, 67, 50, 0.58));
+              display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .ssla-hero::before,
+    .ssla-hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .ssla-hero::before {
+      width: 420px;
+      height: 420px;
+      background: rgba(183, 214, 195, 0.16);
+      top: -120px;
+      right: -80px;
+      filter: blur(8px);
+    }
+
+    .ssla-hero::after {
+      width: 320px;
+      height: 320px;
+      background: rgba(212, 177, 90, 0.12);
+      bottom: -90px;
+      left: -80px;
+      filter: blur(8px);
+    }
+
+    .ssla-hero-inner {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      padding: 120px 0 80px;
+    }
+
+    .ssla-copy {
+      color: white;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .ssla-copy h1 {
+      margin: 0 0 18px;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
+
+    .ssla-copy p {
+      margin: 0 0 18px;
+      font-size: 19px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.92);
+      max-width: 640px;
+    }
+
+    .ssla-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .ssla-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+    }
+
+    .ssla-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .ssla-btn-primary {
+      background: var(--gold);
+      color: #173127;
+    }
+
+    .ssla-btn-secondary {
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.10);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .ssla-stat-card {
+      justify-self: end;
+      width: min(100%, 380px);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 28px;
+      color: white;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+
+    .ssla-stat-card h2 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stat-item {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .stat-item:first-child { border-top: none; padding-top: 0; }
+
+    .stat-num {
+      display: block;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: rgba(255,255,255,0.88);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .kicker {
+      color: var(--forest-green);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--forest-green);
+    }
+
+    .section-heading p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #42574c;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .intro-card {
+      background: white;
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 18px 48px rgba(27, 67, 50, 0.08);
+    }
+
+    .intro-card p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .photo-frame {
+      background: linear-gradient(180deg, rgba(132,169,140,0.18), rgba(212,177,90,0.10));
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(27, 67, 50, 0.12);
+      min-height: 420px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .curriculum-section {
+      background: #eef3ed;
+      border-top: 1px solid rgba(27, 67, 50, 0.06);
+      border-bottom: 1px solid rgba(27, 67, 50, 0.06);
+    }
+
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .curriculum-card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 14px 34px rgba(27, 67, 50, 0.08);
+    }
+
+    .curriculum-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(132, 169, 140, 0.16);
+      color: var(--forest-green);
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .curriculum-card h3 {
+      margin: 0 0 10px;
+      color: var(--forest-green);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .curriculum-card p {
+      margin: 0;
+      line-height: 1.75;
+      color: #476053;
+      font-size: 16px;
+    }
+
+    .split-feature {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .mentor-panel {
+      background: var(--forest-green);
+      color: white;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 18px 44px rgba(27, 67, 50, 0.18);
+    }
+
+    .mentor-panel h3 {
+      margin: 0 0 14px;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+    }
+
+    .mentor-panel p {
+      margin: 0 0 20px;
+      line-height: 1.8;
+      font-size: 17px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .skill-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .skill-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .skill-item:first-child { border-top: none; padding-top: 0; }
+
+    .skill-item i {
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    .feature-copy {
+      display: grid;
+      gap: 22px;
+    }
+
+    .feature-copy-card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 14px 34px rgba(27, 67, 50, 0.08);
+    }
+
+    .feature-copy-card h4 {
+      margin: 0 0 10px;
+      color: var(--forest-green);
+      font-size: 22px;
+    }
+
+    .feature-copy-card p {
+      margin: 0;
+      line-height: 1.8;
+      color: #476053;
+      font-size: 16px;
+    }
+
+    .cta-wrap {
+      padding: 100px 24px 120px;
+      background:
+        linear-gradient(135deg, rgba(27,67,50,0.96), rgba(39,89,69,0.92));
+    }
+
+    .cta-card {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 30px;
+      padding: 44px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 22px 56px rgba(0,0,0,0.2);
+    }
+
+    .cta-card h2 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .cta-card p {
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .cta-card .ssla-actions {
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 980px) {
+      .ssla-hero-inner,
+      .intro-grid,
+      .split-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .ssla-stat-card {
+        justify-self: start;
+        width: 100%;
+      }
+
+      .curriculum-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-frame {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ssla-hero-inner {
+        width: min(100% - 32px, 100%);
+        padding: 112px 0 72px;
+      }
+
+      .section {
+        width: min(100% - 32px, 100%);
+        padding: 72px 0;
+      }
+
+      .ssla-copy p,
+      .section-heading p,
+      .intro-card p,
+      .cta-card p {
+        font-size: 17px;
+      }
+
+      .intro-card,
+      .mentor-panel,
+      .feature-copy-card,
+      .curriculum-card,
+      .cta-card,
+      .ssla-stat-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">Alexandria House</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html#mission">Our Mission</a></li>
+        <li><a href="index.html#services">What We Do</a></li>
+        <li class="nav-dropdown">
+          <a href="get_involved.html">Get Involved</a>
+          <div class="nav-dropdown-content">
+            <a href="get_involved.html#volunteer">Volunteer</a>
+            <a href="get_involved.html#partner">Partner With Us</a>
+            <a href="get_involved.html#events">Events</a>
+            <a href="https://www.amazon.com/hz/wishlist/ls/WO4AZPR4QC0J?ref_=wl_fv_le" target="_blank">Amazon Wishlist</a>
+          </div>
+        </li>
+        <li><a href="community-resources.html">Community Resources</a></li>
+        <li><a href="help.html">Crisis Help</a></li>
+      </ul>
+      <a href="#connect" class="donate-btn">Learn More</a>
+    </div>
+  </nav>
+
+  <section class="ssla-hero">
+    <div class="ssla-hero-inner">
+      <div class="ssla-copy">
+        <div class="eyebrow">Alexandria House Program</div>
+        <h1>Startup Sisterhood LA</h1>
+        <p>
+          Startup Sisterhood LA provides the Alexandria House community with the training,
+          counseling, and access to resources needed to pursue, develop, and succeed in a career
+          or small business.
+        </p>
+        <div class="ssla-actions">
+          <a class="ssla-btn ssla-btn-primary" href="https://www.instagram.com/startupsisterhoodla/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i> Visit Instagram
+          </a>
+          <a class="ssla-btn ssla-btn-secondary" href="#curriculum">
+            Explore the Program
+          </a>
+        </div>
+      </div>
+
+      <div class="ssla-stat-card">
+        <h2>Program Snapshot</h2>
+        <div class="stat-list">
+          <div class="stat-item">
+            <span class="stat-num">13</span>
+            <span class="stat-label">weeks of guided instruction, support, and growth</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">1:1</span>
+            <span class="stat-label">mentorship tailored to each participant’s goals and next steps</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Real</span>
+            <span class="stat-label">training in business fundamentals, digital tools, and career-building skills</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="intro-grid">
+      <div class="section-heading" style="margin-bottom:0;">
+        <div class="kicker">Why it matters</div>
+        <h2>Building pathways to independence through entrepreneurship and career development.</h2>
+        <p>
+          Startup Sisterhood LA partners with successful entrepreneurs who share their knowledge,
+          connections, and resources with participants. The goal is not just exposure, but real
+          readiness: practical skills, stronger decision-making, and the support to pursue personal
+          and professional goals with confidence.
+        </p>
+      </div>
+
+      <div class="photo-frame">
+        <img src="images/startupSisterhood%20LA2.jpg" alt="Startup Sisterhood LA participants and mentors">
+      </div>
+    </div>
+  </section>
+
+
+
+ <footer class="site-footer">
+        <div class="footer-inner">
+
+          <!-- Left: Contact Info -->
+          <div class="footer-left">
+            <h3>Contact Us</h3>
+
+            <p>
+              <a href="tel:12133812649">(213) 381-2649</a><br>
+              <a href="mailto:info@alexandriahouse.org">info@alexandriahouse.org</a>
+            </p>
+
+            <p>
+              426 S. Alexandria Avenue<br>
+              Los Angeles, CA 90020
+            </p>
+
+            <p class="tax-id">
+              Alexandria House Tax ID: 95-4809755
+            </p>
+
+            <div class="social-links">
+              <div class="social-links">
+                <a href="https://www.facebook.com/alexandriahouse" target="_blank" aria-label="Facebook">
+                  <img src="images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/alexandriahouse" target="_blank" aria-label="Instagram" style="width: 150px">
+                  <img src="images/instagram.png" alt="Instagram">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="footer-right">
+            <img src="images/transparency.png" alt="Alexandria House Transparency">
+          </div>
+
+        </div>
+      </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
