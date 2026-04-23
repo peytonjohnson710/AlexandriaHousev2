@@ -3,196 +3,337 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Educational Programs | Alexandria House</title>
+    <title>Education Programs | Alexandria House</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
     <style>
-        /* ── Section wave dividers ─────────────────────────────── */
-        .wave-divider {
-            display: block;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            margin: 0;
-        }
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 80px;
+        .education-hero {
+            background:
+                linear-gradient(rgba(27, 67, 50, 0.45), rgba(27, 67, 50, 0.45)),
+                url("images/afterschool.jpg") center/cover no-repeat;
+            min-height: 82vh;
         }
 
-        /* ── Sticky section jump-nav ────────────────────────────── */
-        .page-subnav {
-            position: sticky;
-            top: 70px;
-            z-index: 80;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
+        .education-hero .hero-content {
+            max-width: 760px;
         }
-        .page-subnav-inner {
-            max-width: 1100px;
+
+        .education-hero .hero-tagline {
+            margin-bottom: 18px;
+        }
+
+        .edu-intro-band {
+            background: var(--forest-green);
+            color: var(--cream);
+            padding: 64px 40px;
+        }
+
+        .edu-intro-inner {
+            max-width: 1180px;
             margin: 0 auto;
-            display: flex;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .page-subnav-inner::-webkit-scrollbar { display: none; }
-        .page-subnav-inner a {
-            flex: 0 0 auto;
-            padding: 0.9rem 1.4rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #888;
-            border-bottom: 2px solid transparent;
-            white-space: nowrap;
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .page-subnav-inner a:hover {
-            color: var(--gold);
-            border-bottom-color: var(--gold);
-        }
-
-        /* ── SUSLA card: visually distinguished as a link ───────── */
-        a.service-card {
-            text-decoration: none;
-            display: block;
-            position: relative;
-            border: 2px solid transparent;
-            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-        }
-        a.service-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-        }
-        .service-card-link-hint {
-            display: inline-flex;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
             align-items: center;
-            gap: 0.35rem;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--gold);
         }
 
-        /* ── Instagram pill link ────────────────────────────────── */
-        .ig-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            margin-top: 0.9rem;
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1.5px solid currentColor;
-            transition: background 0.2s, opacity 0.2s;
-        }
-        .ig-pill:hover { opacity: 0.75; }
-
-        /* ── Section intro text ─────────────────────────────────── */
-        .resources-section-sub {
-            max-width: 680px;
-            margin: -0.5rem auto 2.5rem;
-            text-align: center;
-        }
-
-        /* ── Small hover lift on service cards ──────────────────── */
-        .service-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.09);
-        }
-
-        /* ── SUSLA image hero strip ─────────────────────────────── */
-        .susla-image-strip {
-            width: 100%;
-            max-height: 420px;
-            overflow: hidden;
-            border-radius: 16px;
-            margin: 0 auto 56px;
-            position: relative;
-            box-shadow: 0 12px 48px rgba(27,67,50,0.18);
-        }
-        .susla-image-strip img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-        }
-        .susla-image-strip-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(27,67,50,0.55) 0%, transparent 55%);
-            display: flex;
-            align-items: flex-end;
-            padding: 32px 40px;
-        }
-        .susla-image-strip-overlay p {
+        .edu-intro-copy h2 {
+            font-size: 48px;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            margin-bottom: 18px;
             color: white;
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.01em;
-            margin: 0;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
 
-        /* ── SUSLA CTA buttons ──────────────────────────────────── */
-        .susla-cta-row {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 0 auto 64px;
+        .edu-intro-copy p {
+            font-size: 18px;
+            line-height: 1.85;
+            color: rgba(248, 244, 234, 0.92);
+            margin: 0;
         }
-        .susla-btn {
+
+        .edu-intro-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            padding: 28px;
+            backdrop-filter: blur(6px);
+        }
+
+        .edu-intro-card h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 18px;
+        }
+
+        .edu-intro-card ul {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.9;
+            color: rgba(248, 244, 234, 0.94);
+            font-size: 16px;
+        }
+
+        .edu-photo-strip {
+            padding: 80px 40px 30px;
+            background: var(--off-white);
+        }
+
+        .edu-photo-frame {
+            max-width: 1180px;
+            margin: 0 auto;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(27, 67, 50, 0.12);
+        }
+
+        .edu-photo-frame img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .edu-program-overview {
+            padding: 40px 40px 100px;
+            background: var(--off-white);
+        }
+
+        .edu-overview-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .edu-pill {
+            background: white;
+            border-radius: 18px;
+            padding: 30px 26px;
+            box-shadow: 0 10px 28px rgba(27, 67, 50, 0.08);
+        }
+
+        .edu-pill .icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(132, 169, 140, 0.16);
+            color: var(--forest-green);
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .edu-pill h3 {
+            font-size: 24px;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+
+        .edu-pill p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .edu-schedule {
+            padding: 100px 40px;
+            background: white;
+        }
+
+        .edu-schedule-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .edu-schedule-header {
+            max-width: 760px;
+            margin-bottom: 48px;
+        }
+
+        .edu-schedule-header h2 {
+            font-size: 54px;
+            line-height: 1.02;
+            letter-spacing: -1.5px;
+            color: var(--forest-green);
+            margin-bottom: 16px;
+        }
+
+        .edu-schedule-header p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .edu-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .edu-step {
+            border-top: 4px solid var(--sage);
+            background: var(--off-white);
+            border-radius: 6px 6px 18px 18px;
+            padding: 28px;
+        }
+
+        .edu-step-number {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+
+        .edu-step h3 {
+            font-size: 24px;
+            color: var(--forest-green);
+            margin-bottom: 12px;
+        }
+
+        .edu-step p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .edu-cta-panel {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--mint) 100%);
+        }
+
+        .edu-cta-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 38px;
+            align-items: stretch;
+        }
+
+        .edu-quote,
+        .edu-support-box {
+            background: rgba(255,255,255,0.72);
+            border-radius: 22px;
+            padding: 34px;
+        }
+
+        .edu-quote {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .edu-quote span {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--forest-green);
+            margin-bottom: 14px;
+        }
+
+        .edu-quote p {
+            font-size: 31px;
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            color: var(--forest-green);
+            margin: 0;
+        }
+
+        .edu-support-box h2 {
+            font-size: 42px;
+            line-height: 1.06;
+            letter-spacing: -1.2px;
+            color: var(--forest-green);
+            margin-bottom: 16px;
+        }
+
+        .edu-support-box p {
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--text-dark);
+            margin-bottom: 22px;
+        }
+
+        .edu-button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .edu-button-row a {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 15px 32px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.03em;
+            justify-content: center;
             text-decoration: none;
-            transition: all 0.3s ease;
+            padding: 13px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: all 0.25s ease;
         }
-        .susla-btn.filled {
-            background: var(--gold);
-            color: #fff;
-        }
-        .susla-btn.filled:hover {
-            background: #c69563;
+
+        .edu-button-row a:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(212,165,116,0.4);
         }
-        .susla-btn.outline {
+
+        .edu-primary-btn {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .edu-secondary-btn {
             background: transparent;
             color: var(--forest-green);
-            border: 2px solid var(--forest-green);
-        }
-        .susla-btn.outline:hover {
-            background: var(--forest-green);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(27,67,50,0.2);
+            border: 1px solid rgba(27, 67, 50, 0.2);
         }
 
-        /* ── Section spacing fixes to mesh with waves ───────────── */
-        .section-no-top-pad { padding-top: 0 !important; }
-        .section-no-bot-pad  { padding-bottom: 0 !important; }
+        @media (max-width: 980px) {
+            .edu-intro-inner,
+            .edu-cta-inner,
+            .edu-overview-inner,
+            .edu-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-photo-frame img {
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .edu-intro-band,
+            .edu-photo-strip,
+            .edu-program-overview,
+            .edu-schedule,
+            .edu-cta-panel {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .edu-intro-copy h2,
+            .edu-schedule-header h2,
+            .edu-support-box h2 {
+                font-size: 36px;
+            }
+
+            .edu-quote p {
+                font-size: 25px;
+            }
+
+            .edu-photo-frame img {
+                height: 280px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -215,267 +356,86 @@
                 <li><a href="community-resources.html">Community Resources</a></li>
                 <li><a href="help.html">Crisis Help</a></li>
             </ul>
-            <a href="#donate" class="donate-btn">Donate</a>
+            <a href="#education-support" class="donate-btn">Learn More</a>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero resources-hero">
+    <section class="hero education-hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-tagline">Learn. Grow. Succeed.</div>
-            <h1>Educational Programs</h1>
+            <div class="hero-tagline">Learning. Confidence. Opportunity.</div>
+            <h1>Education Programs</h1>
             <p>
-                Empowering women and children through education, entrepreneurship, and enrichment
-                opportunities that build the skills and confidence needed for lasting independence.
+                Alexandria House creates supportive learning environments where children and families
+                can build confidence, strengthen skills, and grow through consistent educational care.
             </p>
         </div>
     </section>
 
-    <!-- Wave: hero (forest green) → intro banner (forest green) — seamless -->
-    <!-- Intro Banner -->
-    <section class="resources-intro">
-        <div class="resources-intro-inner">
-            <p>
-                Education is central to Alexandria House's mission of empowering women to achieve
-                lasting self-sufficiency. From early childhood care to job development and
-                entrepreneurship training, our programs meet families where they are — and help
-                them reach where they want to go. Many programs are open to residents, participants,
-                and neighbors across the Mid-Wilshire community.
-            </p>
+
+    <section class="edu-schedule" id="education-support">
+        <div class="edu-schedule-inner">
+            <div class="edu-schedule-header">
+                <h2>How the experience unfolds</h2>
+                <p>
+                    Rather than listing everything at once, this structure gives the page a more natural
+                    rhythm: welcome, support, engagement, and growth. It feels closer to how a family or
+                    student might actually experience the program.
+                </p>
+            </div>
+
+            <div class="edu-timeline">
+                <div class="edu-step">
+                    <div class="edu-step-number">01 / Arrive</div>
+                    <h3>A safe place after school</h3>
+                    <p>
+                        Students enter a supportive environment where they are welcomed, seen, and given
+                        the consistency that helps learning feel possible.
+                    </p>
+                </div>
+
+                <div class="edu-step">
+                    <div class="edu-step-number">02 / Engage</div>
+                    <h3>Support that builds momentum</h3>
+                    <p>
+                        Academic help and enrichment activities work together to strengthen skills,
+                        curiosity, and confidence over time.
+                    </p>
+                </div>
+
+                <div class="edu-step">
+                    <div class="edu-step-number">03 / Grow</div>
+                    <h3>Foundations for the future</h3>
+                    <p>
+                        As children build routines and trust, they gain tools that can support stronger
+                        school experiences and long-term development.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Wave: forest-green intro → off-white adult education -->
-    <div class="wave-divider" style="background: var(--forest-green);">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,0 C360,80 1080,0 1440,60 L1440,80 L0,80 Z" fill="#f8f9fa"/>
-        </svg>
-    </div>
-
-    <!-- Sticky section jump-nav -->
-    <nav class="page-subnav" aria-label="Page sections">
-        <div class="page-subnav-inner">
-            <a href="#adult-education">Adult Education</a>
-            <a href="#youth-programs">Youth Programs</a>
-            <a href="#susla-spotlight">Start-Up Sisterhood LA</a>
-        </div>
-    </nav>
-
-    <!-- Adult Education -->
-    <section class="services resources-section section-no-top-pad" id="adult-education" style="background: var(--off-white);">
-        <h2 style="padding-top: 80px;">Adult Education &amp; Economic Empowerment</h2>
-        <div class="service-grid">
-
-            <a href="#susla-spotlight" class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-store"></i> Start-Up Sisterhood LA (SUSLA)</h3>
-                    <p>
-                        Our flagship 13-week entrepreneurship program gives women the training,
-                        mentorship, and resources to launch and grow their own small businesses —
-                        from writing a business plan to landing their first client.
-                    </p>
-                    <span class="service-card-link-hint">
-                        See the full program <i class="fa-solid fa-arrow-down fa-xs"></i>
-                    </span>
-                </div>
-            </a>
-
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-briefcase"></i> Job Development</h3>
-                    <p>
-                        Our Director of Job Development and Entrepreneurship works one-on-one with
-                        residents to identify strengths, build career plans, and connect with
-                        employers — supporting every step toward economic stability.
-                    </p>
-                </div>
+    <section class="edu-cta-panel">
+        <div class="edu-cta-inner">
+            <div class="edu-quote">
+                <span>Why it matters</span>
+                <p>When learning feels safe and supported, confidence has space to grow.</p>
             </div>
 
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-piggy-bank"></i> Financial Literacy Classes</h3>
-                    <p>
-                        Interactive workshops on budgeting, saving, credit-building, and banking
-                        give participants the financial knowledge they need to achieve and maintain
-                        independence long after leaving Alexandria House.
-                    </p>
+            <div class="edu-support-box">
+                <h2>A page that feels more like the Alexandria House brand.</h2>
+                <p>
+                    This direction leans more on the site’s existing hero, navbar, footer, button, and
+                    typography patterns while simplifying the interior into a few strong components. It
+                    should feel more editorial, more cohesive, and much less template-like.
+                </p>
+                <div class="edu-button-row">
+                    <a href="get_involved.html" class="edu-primary-btn">Get Involved</a>
+                    <a href="community-resources.html" class="edu-secondary-btn">Community Resources</a>
                 </div>
             </div>
-
         </div>
     </section>
-
-    <!-- Wave: off-white → white (youth programs) -->
-    <div class="wave-divider" style="background: var(--off-white);">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,60 C480,0 960,80 1440,20 L1440,80 L0,80 Z" fill="#ffffff"/>
-        </svg>
-    </div>
-
-    <!-- Youth Programs -->
-    <section class="services resources-section resources-dark section-no-top-pad" id="youth-programs" style="background: white;">
-        <h2 style="padding-top: 60px;">Youth Educational Programs</h2>
-        <p class="resources-section-sub">
-            When mothers pursue work or education, their children need a safe, nurturing place
-            to grow. Alexandria House provides a full continuum of care — from infant programs
-            through school-age enrichment.
-        </p>
-        <div class="service-grid">
-
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-baby"></i> Early Childhood Education (ECE)</h3>
-                    <p>
-                        Our ECE program serves babies and toddlers with a low child-to-staff ratio,
-                        providing the individualized attention and developmental support the youngest
-                        members of our community need most.
-                    </p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-book-open-reader"></i> Afterschool Program (K–5)</h3>
-                    <p>
-                        A free afterschool program for Kindergarten through 5th grade combining
-                        enrichment activities, reading development, and tutoring — so children
-                        stay on track while their parents pursue their goals.
-                    </p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-content">
-                    <h3><i class="fa-solid fa-sun"></i> Day Camp (LAUSD Breaks)</h3>
-                    <p>
-                        During LAUSD school breaks, our afterschool program becomes a full-day
-                        camp with activities and field trips — keeping children in a safe,
-                        stimulating environment all year long.
-                    </p>
-                </div>
-            </div>
-            </div>d
-
-        </div>
-    </section>
-
-    <!-- Wave: white → forest-green (SUSLA) -->
-    <div class="wave-divider" style="background: white;">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,20 C360,80 1080,0 1440,50 L1440,80 L0,80 Z" fill="var(--forest-green)"/>
-        </svg>
-    </div>
-
-    <!-- SUSLA Spotlight -->
-    <section class="services resources-section section-no-top-pad" id="susla-spotlight"
-             style="background: var(--forest-green);">
-
-        <!-- Section heading in reversed color -->
-        <h2 style="color: var(--cream); padding-top: 60px;">Spotlight: Start-Up Sisterhood LA</h2>
-
-        <p class="resources-section-sub" style="color: var(--cream); opacity: 0.9;">
-            SUSLA was born from listening. During COVID-19, many women in our community lost their
-            livelihoods in the service industry. In response, Alexandria House developed this
-            13-week entrepreneurship program — and today, SUSLA graduates run businesses across
-            Los Angeles. Follow along:
-            <a href="https://www.instagram.com/startupsisterhoodla/" target="_blank"
-               class="ig-pill" style="color: var(--gold);">
-                <i class="fa-brands fa-instagram"></i> @startupsisterhoodla
-            </a>
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="susla-cta-row">
-            <a href="#" class="susla-btn filled">
-                <i class="fa-solid fa-star"></i> Meet the Entrepreneurs
-            </a>
-            <a href="#" class="susla-btn outline" style="color: var(--cream); border-color: var(--cream);">
-                <i class="fa-solid fa-people-group"></i> Meet the Team
-            </a>
-        </div>
-
-        <!-- Photo strip -->
-        <div class="susla-image-strip" style="max-width: 1100px;">
-            <img src="images/startupSisterhood LA2.jpg" alt="Start-Up Sisterhood LA cohort" />
-            <div class="susla-image-strip-overlay">
-                <p>Women from across Los Angeles building their futures through SUSLA.</p>
-            </div>
-        </div>
-
-        <!-- Feature cards -->
-        <div class="resources-connections-grid" style="max-width: 1100px; margin: 0 auto;">
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                </div>
-                <h3 style="color: var(--cream);">Business Planning</h3>
-                <p style="color: rgba(202,210,197,0.85);">Participants build a complete business plan from concept to launch, guided step-by-step by instructors and mentors.</p>
-            </div>
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-landmark"></i>
-                </div>
-                <h3 style="color: var(--cream);">Banking &amp; Credit</h3>
-                <p style="color: rgba(202,210,197,0.85);">Workshops on opening business accounts, building credit, and establishing the financial foundation every small business needs.</p>
-            </div>
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-globe"></i>
-                </div>
-                <h3 style="color: var(--cream);">Website &amp; Marketing</h3>
-                <p style="color: rgba(202,210,197,0.85);">Training in building a web presence and developing marketing strategies to reach customers and grow a brand.</p>
-            </div>
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-user-tie"></i>
-                </div>
-                <h3 style="color: var(--cream);">1-on-1 Mentorship</h3>
-                <p style="color: rgba(202,210,197,0.85);">Each participant is paired with a mentor providing personalized support in bookkeeping, accounting, design, and more.</p>
-            </div>
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-id-card"></i>
-                </div>
-                <h3 style="color: var(--cream);">Licensing &amp; Legal Basics</h3>
-                <p style="color: rgba(202,210,197,0.85);">Step-by-step guidance on registering a business, obtaining licenses, and meeting California requirements.</p>
-            </div>
-
-            <div class="resources-connection-card" style="background: rgba(255,255,255,0.07); border-left-color: var(--gold);">
-                <div class="resources-connection-icon" style="background: rgba(212,165,116,0.18); color: var(--gold);">
-                    <i class="fa-solid fa-utensils"></i>
-                </div>
-                <h3 style="color: var(--cream);">SUSLA Graduate Catering</h3>
-                <p style="color: rgba(202,210,197,0.85);">Many graduates operate their own catering businesses. Support their work through our Top Chef catering vendor directory — contact us to learn more.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Wave: forest-green SUSLA → forest-green CTA (seamless) -->
-
-    <!-- CTA Banner -->
-    <section class="resources-intro" style="background: var(--sage);">
-        <div class="resources-intro-inner">
-            <p>
-                Want to support our educational programs as a tutor, workshop facilitator, or
-                SUSLA mentor? Volunteers make these programs possible.
-                <strong><a href="get_involved.html#volunteer" style="color: inherit;">Learn how to get involved &rarr;</a></strong>
-            </p>
-        </div>
-    </section>
-
-    <!-- Wave: sage CTA → footer dark green -->
-    <div class="wave-divider" style="background: var(--sage);">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#0f2f24"/>
-        </svg>
-    </div>
 
     <footer class="site-footer">
         <div class="footer-inner">
@@ -510,20 +470,6 @@
             const nav = document.getElementById('navbar');
             nav.classList.toggle('scrolled', window.scrollY > 20);
         });
-
-        // Highlight active jump-nav link on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const subLinks = document.querySelectorAll('.page-subnav a');
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    subLinks.forEach(l => { l.style.color = ''; l.style.borderBottomColor = 'transparent'; });
-                    const match = document.querySelector(`.page-subnav a[href="#${e.target.id}"]`);
-                    if (match) { match.style.color = 'var(--gold)'; match.style.borderBottomColor = 'var(--gold)'; }
-                }
-            });
-        }, { rootMargin: '-35% 0px -60% 0px' });
-        sections.forEach(s => io.observe(s));
     </script>
 
 </body>
