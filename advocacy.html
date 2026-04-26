@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advocacy | Alexandria House</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="images/alexandriahouse.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* ── Hero ── */
+        .advocacy-hero {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--sage) 100%);
+            min-height: 80vh;
+        }
+
+        /* Intro */
+        .advocacy-intro {
+            background: var(--forest-green);
+            padding: 56px 40px;
+        }
+        .advocacy-intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .advocacy-intro-inner p {
+            font-size: 20px;
+            color: var(--cream);
+            line-height: 1.8;
+        }
+
+        /* Focus Areas */
+        .advocacy-focus {
+            padding: 100px 40px;
+            background: var(--off-white);
+        }
+        .advocacy-focus h2 {
+            font-size: 56px;
+            text-align: center;
+            color: var(--forest-green);
+            margin-bottom: 16px;
+        }
+        .advocacy-sub {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px;
+            font-size: 18px;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .focus-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(27,67,50,0.08);
+            transition: 0.3s;
+            border-left: 4px solid var(--mint);
+        }
+        .focus-card:hover {
+            transform: translateY(-6px);
+            border-left-color: var(--gold);
+            box-shadow: 0 12px 40px rgba(27,67,50,0.15);
+        }
+
+        .focus-icon {
+            font-size: 28px;
+            color: var(--forest-green);
+            margin-bottom: 16px;
+        }
+
+        /* Advocacy Action Section */
+        .advocacy-action {
+            background: var(--forest-green);
+            padding: 100px 40px;
+            color: white;
+        }
+        .advocacy-action-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .action-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .action-step i {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+       
+
+        /* Stats */
+        .advocacy-stats {
+            background: white;
+            padding: 100px 40px;
+        }
+
+        /* CTA */
+        .advocacy-cta {
+            padding: 100px 40px;
+            text-align: center;
+            background: var(--off-white);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none; color:inherit;">Alexandria House</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#mission">Our Mission</a></li>
+            <li><a href="index.html#services">What We Do</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="advocacy.html" class="nav-active">Advocacy</a></li>
+        </ul>
+        <a href="#donate" class="donate-btn">Donate</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero advocacy-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-tagline">Advancing Justice</div>
+        <h1>Advocacy & Systems Change</h1>
+        <p>
+            We work alongside women and families to challenge injustice, influence policy,
+            and create lasting change in housing, economic opportunity, and human rights.
+        </p>
+    </div>
+</section>
+
+
+
+<!-- FOCUS AREAS -->
+<section class="advocacy-focus">
+    <h2>Our Advocacy Priorities</h2>
+    <p class="advocacy-sub">
+        We engage in community-centered advocacy across the issues that matter most.
+    </p>
+
+    <div class="focus-grid">
+
+        <div class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-house"></i></div>
+            <h3>Housing Justice</h3>
+            <p>Advocating for tenant protections, affordable housing, and policies that prevent displacement.</p>
+        </div>
+
+        <div class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3>Women’s Rights</h3>
+            <p>Promoting gender equity and leadership opportunities for women overcoming systemic barriers.</p>
+        </div>
+
+        <div class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-coins"></i></div>
+            <h3>Economic Justice</h3>
+            <p>Supporting fair wages, job access, and pathways to long-term financial stability.</p>
+        </div>
+
+        <div class="focus-card">
+            <div class="focus-icon"><i class="fa-solid fa-globe"></i></div>
+            <h3>Immigration</h3>
+            <p>Standing with immigrant families and advocating for humane and just policies.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HOW WE ADVOCATE -->
+<section class="advocacy-action">
+    <div class="advocacy-action-inner">
+        <h2 style="text-align:center; margin-bottom:60px;">How We Create Change</h2>
+
+        <div class="action-steps">
+            <div class="action-step">
+                <i class="fa-solid fa-microphone"></i>
+                <h3>Amplify Voices</h3>
+                <p>Residents share their stories to influence policy and public awareness.</p>
+            </div>
+
+            <div class="action-step">
+                <i class="fa-solid fa-users"></i>
+                <h3>Community Organizing</h3>
+                <p>We build collective power through partnerships and coalitions.</p>
+            </div>
+
+            <div class="action-step">
+                <i class="fa-solid fa-landmark"></i>
+                <h3>Policy Advocacy</h3>
+                <p>We engage with lawmakers to push for equitable systems and reform.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- STATS -->
+<section class="impact-stats advocacy-stats">
+    <div class="stats-container">
+        <div class="stat">
+            <div class="stat-number">300+</div>
+            <div class="stat-label">Advocacy Actions</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Voices Elevated</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Policy Efforts Supported</div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <h3>Contact Us</h3>
+            <p>(213) 381-2649</p>
+            <p>info@alexandriahouse.org</p>
+        </div>
+        <div class="footer-right">
+            <img src="images/transparency.png" alt="">
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+</script>
+
+</body>
+</html>
